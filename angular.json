@@ -24,8 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -121,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "gamer-lobby"
+    }
+  },
+  "defaultProject": "gamer-lobby",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
