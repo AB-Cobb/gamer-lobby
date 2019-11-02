@@ -1,33 +1,68 @@
 
-<h2>Add Player</h2>
-<form >
-    <div class="form-group">
-        <label for="player-name">Player Name: </label>
-        <input type="text" id="player-name" class="form-control">
+
+
+<div class="card">
+    <div  class="card-header">
+        <h2>Edit Player</h2>
     </div>
 
-    <label for="player-rank">Rank: </label>
-    <select id="player-rank" class="form-control">
-        <option *ngFor="let item of arr(10,1); let i = index;">{{i}}</option>
-    </select>
+    <div class="card-body">
+        <form>
+            <div class="form-group row">
+                <label for="player-name" class="col-sm-2 col-form-label">Player Name: </label>
+                <div class="col-sm-10">
+                    <input type="text" id="player-name" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="player-rank" class="col-sm-2 col-form-label">Rank: </label>
+                <div class="col-sm-10">
+                    <select id="player-rank" class="form-control">
+                        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10];">{{i}}</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="player-score" class="col-sm-2 col-form-label">Score: </label>
+                <div class="col-sm-10">
+                    <input type="number" id="player-score" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="player-time" class="col-sm-2 col-form-label">Time: </label>
+                <div class="col-sm-10">
+                    <input type="number" id="player-time" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="player-fav-game" class="col-sm-2 col-form-label">Favorite Game: </label>
+                <div class="col-sm-10">
+                    <select id="player-fav-game" class="form-control">
+                        <option *ngFor="let game of games">{{game.game-name}}</option>
+                    </select>
+                </div>
+            </div>
 
 
-    <label for="player-score" >Score: </label>
-    <input type="number" id="player-score" class="form-control"><br>
 
-    <label for="player-time" >Time: </label>
-    <input type="number" id="player-time" class="form-control"><br>
+            <div class="form-group row">
+                <label for="player-status"class="col-sm-2 col-form-label">Status: </label>
+                <div class="col-sm-10">
+                    <select id="player-status"class="form-control">
+                        <option value="true">Availible</option>
+                        <option value="false">Unavailible</option>
+                    </select>
+                </div>
+            </div>
+            <a class="btn btn-secondary mr-3" routerLink="/" routerLinkActive="active">Submit</a>
+            <a class="btn btn-secondary" routerLink="/" routerLinkActive="active">Cancel</a>  
+        </form>
+    </div>
+</div>
 
-    <label for="player-fav-game" >Favorite Game: </label>
-    <select id="player-fav-game" class="form-control">
-        <option *ngFor="let game of games">{{game.game-name}}</option>
-    </select><br>
 
-    <label for="player-status" ">Status: </label>
-    <select id="player-status"class="form-control>
-        <option value="true">Availible</option>
-        <option value="false">Unavailible</option>
-    </select><br>
-    <a class="btn btn-outline-dark" routerLink="/" routerLinkActive="active">Add</a>
-    <a class="btn btn-outline-dark" routerLink="/" routerLinkActive="active">Cancel</a>
-</form>
