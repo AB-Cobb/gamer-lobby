@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Server for Gamer Lobby, Andrew Cobb",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo 'Hello World' && Exit 1"
+  },
+  "author": "Andrew Cobb",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
