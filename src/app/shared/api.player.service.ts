@@ -30,8 +30,8 @@ export class PlayerService {
     return this.http.get(this.endpoint+'/get-all-players');
   }
   //get player by id
-  GetPlayerById(): Observable<any> {
-    let API_URL = this.endpoint+'/update-player/${id}';
+  GetPlayerById(id): Observable<any> {
+    let API_URL = this.endpoint+'/get-player/'+id;
     return this.http.get(API_URL, { headers: this.headers}).pipe(
       map((res: Response) =>{
         return res || {}
@@ -41,7 +41,7 @@ export class PlayerService {
   }
   //Update player
   UpdatePlayer(id, data: Player): Observable<any> {
-    let API_URL = this.endpoint+'/update-player/${id}';
+    let API_URL = this.endpoint+'/update-player/'+id;
     return this.http.put(API_URL, data, { headers: this.headers}).pipe(
       catchError(this.errorHandler)
     )

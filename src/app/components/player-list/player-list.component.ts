@@ -33,7 +33,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   private deletePlayer(player){
-    if (confirm("deltete "+ player['player_name'] +"?")){
+    if (confirm("delete "+ player['player_name'] +"?")){
       this.playerApi.DeletePlayer(player._id).subscribe();
       console.log("deleted player: "+player['player_name']);
       //remove play from array
@@ -47,8 +47,7 @@ export class PlayerListComponent implements OnInit {
     this.playerApi.GetAllPlayers().subscribe(data=>{
           this.playerArray = data;
           this.filteredArray = data;
-    })//*/
+    })
   }
-  ngOnInit() {  }
-
+  ngOnInit() {}
 }
