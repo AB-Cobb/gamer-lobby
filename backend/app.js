@@ -29,11 +29,13 @@ app.use(cors());
 //Static Directory
 app.use(express.static(path.join(__dirname, 'dist/gammer-lobby')));
 //app.use('/', express.static(path.join(__dirname, 'dist/gammer-lobby')));
+
+//API 
 app.use('/api', playerRoute)
 
 // Create port
 const port = process.env.PORT || 8000;
-const server = app.listen(port, () => {
+app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
