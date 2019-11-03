@@ -5,5 +5,5 @@ export class Player {
     player_score: Number;
     player_time: Number;
     player_fav_game: String;
-    player_satus: Boolean;
+    player_status: String;
 }

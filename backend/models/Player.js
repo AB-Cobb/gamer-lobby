@@ -17,8 +17,8 @@ let Player = new Schema({
     player_fav_game: {
         type: String
     },
-    player_satus: {
-        type: Boolean
+    player_status: {
+        type: String
     }
 })
 

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { PlayerService } from './shared/api.player.service';
+
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { JoinGameComponent } from './components/join-game/join-game.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
@@ -22,14 +24,17 @@ import { GameListComponent } from './components/game-list/game-list.component';
     PlayerRankingsComponent,
     AddPlayerComponent,
     EditPlayerComponent,
-    GameListComponent
+    GameListComponent,
+    
   ],
   imports: [
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,30 +8,30 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class PlayerService {
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private http: HttpClient) { }
 
   // Error handling 
   errorHandler(error: HttpErrorResponse) {
-    let errorMessage = 'Error Error Abandon Ship !!!!';
+    let errorMessage = 'Error Error Abandon Ship !!!! ' + error.message;
     return throwError(errorMessage);
   }
   //Create player
   AddPlayer(data:Player): Observable<any> {
-    let API_URL = '${this.endpoit}/add-player';
+    let API_URL = this.endpoint+'/add-player';
     return this.http.post(API_URL, data).pipe(
       catchError(this.errorHandler)
     )
   }
   //Read all Players
   GetAllPlayers(){
-    return this.http.get('${this.endpoint}/get-all-players');
+    return this.http.get(this.endpoint+'/get-all-players');
   }
   //get player by id
   GetPlayerById(): Observable<any> {
-    let API_URL = '${this.endpoit}/update-player/${id}';
+    let API_URL = this.endpoint+'/update-player/${id}';
     return this.http.get(API_URL, { headers: this.headers}).pipe(
       map((res: Response) =>{
         return res || {}
@@ -41,14 +41,14 @@ export class ApiService {
   }
   //Update player
   UpdatePlayer(id, data: Player): Observable<any> {
-    let API_URL = '${this.endpoit}/update-player/${id}';
+    let API_URL = this.endpoint+'/update-player/${id}';
     return this.http.put(API_URL, data, { headers: this.headers}).pipe(
       catchError(this.errorHandler)
     )
   }
   // delete player
   DeletePlayer(id): Observable<any> {
-    let API_URL = '${this.endpoit}/delete-player/${id}'
+    let API_URL = this.endpoint+'/delete-player/'+id;
     return this.http.delete(API_URL).pipe(
       catchError(this.errorHandler)
     )

@@ -4,7 +4,7 @@
         </div>
     
         <div class="card-body">
-            <form>
+            <form [formGroup]="editPlayer" (ngSubmit)="editPlayerSubmit()">
                 <div class="form-group row">
                     <label for="player-name" class="col-sm-2 col-form-label">Player Name: </label>
                     <div class="col-sm-10">

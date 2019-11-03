@@ -1,11 +1,14 @@
 $primary: darkorange;
 $body-bg: darkgray;
 $jumbotron-bg:  darkorange;
-$jumbotron-color: darkred;
+$jumbotron-color: yellow;
 $display1-weight: 600;
 $card-border-color: black;
-$headings-font-family: "copperplate gothic bold";
+$headings-font-family: "bauhaus 93";
 $font-family-base: "copperplate gothic lite";
 
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+.jumbotron > h1 {
+    font-style: italic;
+}

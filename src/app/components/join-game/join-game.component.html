@@ -26,17 +26,17 @@
         <div class="row">
             <div class="col-md-2">Pick Game</div>
             <div class="col-md-5">
-                <form>
+                <form [formGroup]="joinGame" (ngSubmit)="joinGame()">
                     <select>
                         <option>Quake</option>
                         <option>Doom</option>
                         <option>Unreal</option>
                     </select>
+                    <input type="submit" value="join" class="btn btn-primary mr-3" routerLink="/" routerLinkActive="active">
                 </form>
             </div>
             
         </div> 
-        <a class="btn btn-primary mr-3" routerLink="/" routerLinkActive="active">Join</a>
          <a class="btn btn-primary" routerLink="/" routerLinkActive="active">Cancel</a>  
     </div>
 </div>
