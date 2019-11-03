@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../dist/gammer-lobby')));
-app.use('/', express.static(path.join(__dirname, '../dist/gammer-lobby')));
+app.use(express.static(path.join(__dirname, '../gammer-lobby')));
+app.use('/', express.static(path.join(__dirname, '../gammer-lobby')));
 app.use('/api', playerRoute)
 
 // Create port
