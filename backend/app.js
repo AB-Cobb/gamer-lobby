@@ -35,6 +35,10 @@ const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
+//Serve Angular2 App
+var distDir = __dirname + "/../";
+app.use(express.static(distDir));
+
 // Find 404 and hand over to error handler
 app.use((req, res, next) => {
   next(createError(404));
