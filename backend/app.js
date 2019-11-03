@@ -36,7 +36,7 @@ const server = app.listen(port, () => {
 })
 
 //Serve Angular2 App
-var distDir = __dirname + "/../";
+var distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 // Find 404 and hand over to error handler
