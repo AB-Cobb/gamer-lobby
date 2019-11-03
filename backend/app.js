@@ -25,12 +25,14 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../dist/gammer-lobby')));
-app.use('/', express.static(path.join(__dirname, '../dist/gammer-lobby')));
+
+//Static Directory
+app.use(express.static(path.join(__dirname, 'dist/gammer-lobby')));
+//app.use('/', express.static(path.join(__dirname, 'dist/gammer-lobby')));
 app.use('/api', playerRoute)
 
 // Create port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
@@ -38,6 +40,14 @@ const server = app.listen(port, () => {
 // Find 404 and hand over to error handler
 app.use((req, res, next) => {
   next(createError(404));
+});
+
+// Route to Angular App
+app.get('/', (req, res) => {
+  res.send('invaild endpoint');
+});
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/gammer-lobby/index.html'));
 });
 
 // error handler
