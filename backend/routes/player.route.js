@@ -8,7 +8,8 @@ let Player = require('../models/Player')
 playerRoute.route('/add-player').post((req,res,next) =>{
     Player.create(req.body, (error, data) =>{
         if (error) {
-            return next(error)
+            console.log(error);
+            return next(error);
         } else {
             res.json(data)
         }
@@ -19,9 +20,10 @@ playerRoute.route('/add-player').post((req,res,next) =>{
 playerRoute.route('/get-player/:id').get((req, res) => {
     Player.findById(req.params.id, (error, data) =>{
         if (error) {
-            return next(error)
+            console.log(error);
+            return next(error);
         } else {
-            res.json(data)
+            res.json(data);
         } 
     })
 })
@@ -30,9 +32,10 @@ playerRoute.route('/get-player/:id').get((req, res) => {
 playerRoute.route('/get-all-players').get((req, res) => {
     Player.find((error, data) => {
         if (error) {
-            return next(error)
+            console.log(error);
+            return next(error);
         } else {
-            res.json(data)
+            res.json(data);
         }
     })
 })
@@ -43,7 +46,7 @@ playerRoute.route('/update-player/:id').put((req, res, next) =>{
         $set: req.body
     }, (error, data) => {
         if (error) {
-            console.log(error)
+            console.log(error);
             return next(error);
         } else {
             res.json(data)

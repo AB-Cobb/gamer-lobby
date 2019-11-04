@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //Static Dir
-app.use(express.static(path.join(__dirname+ '/../dist/gamer-lobby')));
+app.use(express.static(__dirname + '/../dist/gamer-lobby'));
 //app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
@@ -41,19 +41,21 @@ app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
-// 404 
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
 // index Route
 app.get('/', (req, res) => {
   res.send('invaild endpoint');
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+ '/../dist/gamer-lobby/index.html'));
+  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
+
+// 404 
+/*
+app.use((req, res, next) => {
+  console.log('routing not working')
+  //next(createError(404));
+});//*/
 
 // error handler
 app.use(function (err, req, res, next) {
