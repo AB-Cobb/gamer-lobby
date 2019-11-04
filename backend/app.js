@@ -5,7 +5,7 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   dataBaseConfig = require('./db/player-db');
 
-// Connecting mongoDB
+//  mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || dataBaseConfig.db, {
   useNewUrlParser: true
@@ -17,8 +17,9 @@ mongoose.connect(process.env.MONGODB_URI || dataBaseConfig.db, {
   }
 )
 
-// Set up express js port
+// express js port
 const playerRoute = require('../backend/routes/player.route')
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,26 +27,26 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cors());
 
-//Static Directory
+//Static Dir
 app.use(express.static(path.join(__dirname+ '../dist/gammer-lobby')));
-app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
-console.log()
+//app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
+console.log('app dir: '+ __dirname+ '../dist/gammer-lobby');
 
-//API 
+//Restful API 
 app.use('/api', playerRoute)
 
-// Create port
-const port = process.env.PORT || 4000;
+// port
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
-// Find 404 and hand over to error handler
+// 404 
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// Route to Angular App
+// index Route
 app.get('/', (req, res) => {
   res.send('invaild endpoint');
 });
