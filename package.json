@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "main": "app.js"
+    "main": "backend/app.js"
   },
   "private": true,
   "dependencies": {
