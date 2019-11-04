@@ -3,49 +3,53 @@
 </div>
     <br>
 <div class="card">
-        <div  class="card-header bg-dark text-white">
+    <div  class="card-header bg-dark text-white">
             <h2>Player List</h2>
         </div>
-        <div class="card-body">
-                <div class="input-group mb-3">
+            <div class="card-body">
+                <div>
+                    <a class="btn btn-sm btn-primary  mr-3" routerLink="/add-player" routerLinkActive="active">Add Player</a>
+                </div>
+                <br>
+                <div class="input-group">
                     <input class="form-control" type="search" name="search" id="search" (input)='updateFilter($event)'>
-                    <div class="input-group-append">
+                    <span class="input-group-append">
                         <span class="btn btn-secondary">
                             Search
-                        </span>
-                    </div>
-                </div>
-            <div class="text-right">
-                <a class="btn btn-sm btn-primary" routerLink="/add-player" routerLinkActive="active">New Player</a>  
-            </div>
-            <table class="table table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Player</th>
-                        <th>Rank</th>
-                        <th>Score</th>
-                        <th>Time</th>
-                        <th>Favourate Game</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody class="table-bordered">
-                    <ng-container *ngFor="let Player of filteredArray">
+                        </span>    
+                    </span> 
+                </div>                
+                <br>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
                         <tr>
-                            <td>{{Player.player_name}}</td>
-                            <td>{{Player.player_rank}}</td>
-                            <td>{{Player.player_score}}</td>
-                            <td>{{Player.player_time}}</td>
-                            <td>{{Player.player_fav_game}}</td>
-                            <td>{{Player.player_status}}</td>
-                            <td>
-                                <a class="btn-sm btn-secondary" routerLink="/edit-player/{{Player._id}}" routerLinkActive="active">Edit</a>
-                                <a class="btn-sm btn-primary" (click)='deletePlayer(Player)'>X</a>
-                            </td>
+                            <th>Player</th>
+                            <th>Rank</th>
+                            <th>Score</th>
+                            <th>Time</th>
+                            <th>Favourate Game</th>
+                            <th>Status</th>
+                            <th>
+                                    
+                            </th>
                         </tr>
-                    </ng-container>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-bordered">
+                        <ng-container *ngFor="let Player of filteredArray">
+                            <tr>
+                                <td>{{Player.player_name}}</td>
+                                <td>{{Player.player_rank}}</td>
+                                <td>{{Player.player_score}}</td>
+                                <td>{{Player.player_time}}</td>
+                                <td>{{Player.player_fav_game}}</td>
+                                <td>{{Player.player_status}}</td>
+                                <td>
+                                    <a class="btn-sm btn-secondary" routerLink="/edit-player/{{Player._id}}" routerLinkActive="active">Edit</a>
+                                    <a class="btn-sm btn-primary" (click)='deletePlayer(Player)'>X</a>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
         </div>
     </div>
