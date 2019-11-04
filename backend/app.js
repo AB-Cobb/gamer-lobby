@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //Static Directory
-app.use(express.static(path.join(__dirname, 'dist/gammer-lobby')));
-//app.use('/', express.static(path.join(__dirname, 'dist/gammer-lobby')));
+app.use(express.static(path.join(__dirname, '../dist/gammer-lobby')));
+app.use('/', express.static(path.join(__dirname, '../dist/gammer-lobby')));
 
 //API 
 app.use('/api', playerRoute)
@@ -49,7 +49,7 @@ app.get('/', (req, res) => {
   res.send('invaild endpoint');
 });
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/gammer-lobby/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/gammer-lobby/index.html'));
 });
 
 // error handler
