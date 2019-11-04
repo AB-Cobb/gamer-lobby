@@ -28,9 +28,9 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //Static Dir
-app.use(express.static(path.join('./dist/gammer-lobby')));
+app.use(express.static(path.join(__dirname+ '/../dist/gamer-lobby')));
 //app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
-console.log('app dir: '+ __dirname+ '../dist/gammer-lobby');
+console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
 app.use('/api', playerRoute)
@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join('./dist/gammer-lobby/index.html'));
+  res.sendFile(path.join(__dirname+ '/../dist/gamer-lobby/index.html'));
 });
 
 // error handler
