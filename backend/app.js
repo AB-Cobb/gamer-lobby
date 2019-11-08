@@ -3,11 +3,11 @@ let express = require('express'),
   mongoose = require('mongoose'),
   cors = require('cors'),
   bodyParser = require('body-parser'),
-  dataBaseConfig = require('./db/player-db');
-
+  DataBaseConfig = require('./db/gamer-lobby-db');
+  //gameDataBaseConfig = require('./db/games-db');
 //  mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || dataBaseConfig.db, {
+mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
   useNewUrlParser: true
 }).then(() => {
     console.log('Database connected')
@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || dataBaseConfig.db, {
 
 // express js port
 const playerRoute = require('../backend/routes/player.route')
+const gameRoute = require('../backend/routes/game.route')
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,7 +34,8 @@ app.use(express.static(__dirname + '/../dist/gamer-lobby'));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
-app.use('/api', playerRoute)
+app.use('/api', playerRoute);
+app.use('/api', gameRoute);
 
 // port
 const port = process.env.PORT || 4000;
@@ -51,10 +53,10 @@ app.get('*', (req, res) => {
 });
 
 // 404 
-/*
+
 app.use((req, res, next) => {
   console.log('routing not working')
-  //next(createError(404));
+  next(createError(404));
 });//*/
 
 // error handler

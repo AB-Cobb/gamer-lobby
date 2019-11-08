@@ -1,6 +1,13 @@
 <div class="card">
     <div  class="card-header bg-dark text-white">
-        <h2>Game List</h2>
+            <ul class="nav nav-justified">
+                    <li class="nav-item">
+                        <h2><a class="nav-link active">Game List</a></h2>
+                    </li>
+                    <li class="nav-item">
+                            <h2><a class="nav-link" routerLink="/player-list" routerLinkActive="active">Go to Player List</a></h2>
+                    </li>
+                </ul>
     </div>
     <div class="card-body">
 
@@ -23,6 +30,7 @@
                     <th>Publisher</th>
                     <th>Realse</th>
                     <th>Status</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody class="table-bordered">
@@ -35,24 +43,21 @@
                     <td>Realse</td>
                     <td>Status</td>
                 </tr>  
-                <tr>  
-                        <td>Title</td>
-                        <td>Platform</td>
-                        <td>Genre</td>
-                        <td>Rating</td>
-                        <td>Publisher</td>
-                        <td>Realse</td>
-                        <td>Status</td>
-                </tr>  
-                <tr>  
-                    <td>Title</td>
-                    <td>Platform</td>
-                    <td>Genre</td>
-                    <td>Rating</td>
-                    <td>Publisher</td>
-                    <td>Realse</td>
-                    <td>Status</td>
-                </tr>  
+                <ng-container *ngFor="let Game of filteredArray">
+                    <tr>
+                        <td>{{Game.game_title}}</td>
+                        <td>{{Game.game_platform}}</td>
+                        <td>{{Game.game_genre}}</td>
+                        <td>{{Game.game_rating}}</td>
+                        <td>{{Game.game_publisher}}</td>
+                        <td>{{Game.game_release}}</td>
+                        <td>{{Game.game_status}}</td>
+                        <td>
+                            <!--<a class="btn-sm btn-secondary" routerLink="/edit-game/{{Game._id}}" routerLinkActive="active">Edit</a>-->
+                            <a class="btn-sm btn-primary" (click)='deleteGame(Game)'>X</a>
+                        </td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
     </div>

@@ -5,7 +5,6 @@
     <div  class="card-header bg-dark text-white">
         <h2>Create New Player</h2>
     </div>
-
     <div class="card-body">
         <form [formGroup]="addPlayerForm" (ngSubmit)="submitAddPlayerForm()">
             <div class="form-group row">
@@ -14,7 +13,6 @@
                     <input type="text" id="player-name" class="form-control" formControlName="player_name">
                 </div>
             </div>
-
             <div class="form-group row">
                 <label for="player-rank" class="col-sm-2 col-form-label">Rank: </label>
                 <div class="col-sm-10">
@@ -24,21 +22,18 @@
                     </select>
                 </div>
             </div>
-
             <div class="form-group row">
                 <label for="player-score" class="col-sm-2 col-form-label">Score: </label>
                 <div class="col-sm-10">
                     <input type="number" id="player-score" class="form-control" formControlName="player_score">
                 </div>
             </div>
-
             <div class="form-group row">
                 <label for="player-time" class="col-sm-2 col-form-label">Time: </label>
                 <div class="col-sm-10">
                     <input type="number" id="player-time" class="form-control" formControlName="player_time">
                 </div>
             </div>
-
             <div class="form-group row">
                 <label for="player-fav-game" class="col-sm-2 col-form-label">Favorite Game: </label>
                 <div class="col-sm-10">
@@ -47,9 +42,6 @@
                     </select>
                 </div>
             </div>
-
-
-
             <div class="form-group row">
                 <label for="player-status"class="col-sm-2 col-form-label">Status: </label>
                 <div class="col-sm-10">
@@ -59,7 +51,7 @@
                 </div>
             </div>
             <input type="submit" class="btn btn-primary mr-3">
-            <a class="btn btn-primary" routerLink="/" routerLinkActive="active">Cancel</a>  
+            <a class="btn btn-primary" routerLink="/player-list" routerLinkActive="active">Cancel</a>  
         </form>
     </div>
 </div>

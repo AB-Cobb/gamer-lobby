@@ -11,14 +11,14 @@ import { filter } from 'minimatch';
 export class PlayerListComponent implements OnInit {
   playerArray: any = [];
   filteredArray: any = [];
-  filter: string ='';
+  searchFilter: string ='';
 
   private updateArrays() {
     if (filter.length > 0){
       this.filteredArray = [];
       this.playerArray.forEach(player => {
-        let str =''+ player['player_name']
-        if (str.includes(this.filter)){
+        let str = '' + player['player_name']
+        if (str.toLocaleUpperCase().includes(this.searchFilter.toLocaleUpperCase())){
           this.filteredArray.push(player)
         }
       })
@@ -28,7 +28,7 @@ export class PlayerListComponent implements OnInit {
   }
 
   private updateFilter(e) {
-    this.filter = e.target.value;
+    this.searchFilter = e.target.value;
     this.updateArrays();
   }
 

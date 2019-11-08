@@ -4,13 +4,16 @@
     <br>
 <div class="card">
     <div  class="card-header bg-dark text-white">
-            <h2>Player List</h2>
+            <ul class="nav nav-justified">
+                <li class="nav-item">
+                    <h2><a class="nav-link active">Player List</a></h2>
+                </li>
+                <li class="nav-item">
+                        <h2><a class="nav-link" routerLink="/game-list" routerLinkActive="active">Go to Game List</a></h2>
+                </li>
+            </ul>
         </div>
             <div class="card-body">
-                <div>
-                    <a class="btn btn-sm btn-primary  mr-3" routerLink="/add-player" routerLinkActive="active">Add Player</a>
-                </div>
-                <br>
                 <div class="input-group">
                     <input class="form-control" type="search" name="search" id="search" (input)='updateFilter($event)'>
                     <span class="input-group-append">
@@ -18,6 +21,11 @@
                             Search
                         </span>    
                     </span> 
+                </div>
+                <br>
+                <div class="text-right">
+                    <a  class="btn btn-sm btn-primary  mr-3" routerLink="/add-player" routerLinkActive="active">Add Player</a>
+                    
                 </div>                
                 <br>
                 <table class="table table-striped">

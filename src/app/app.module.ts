@@ -14,6 +14,7 @@ import { PlayerRankingsComponent } from './components/player-rankings/player-ran
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { GameListComponent } from './components/game-list/game-list.component';
+import { EditGameComponent } from './components/edit-game/edit-game.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { GameListComponent } from './components/game-list/game-list.component';
     AddPlayerComponent,
     EditPlayerComponent,
     GameListComponent,
+    EditGameComponent,
     
   ],
   imports: [
