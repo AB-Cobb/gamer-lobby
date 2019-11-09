@@ -41,19 +41,17 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
-/*
+
 // index Route
 app.get('/', (req, res) => {
-  res.send('invaild endpoint');
+  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
-
-
 app.get('*', (req, res) => {
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
 
 
-
+/*
 app.use((req, res, next) => {
   console.log('routing not working')
   next(createError(404));
