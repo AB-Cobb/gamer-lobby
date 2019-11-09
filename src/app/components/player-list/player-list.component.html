@@ -9,7 +9,7 @@
                     <h2><a class="nav-link active">Player List</a></h2>
                 </li>
                 <li class="nav-item">
-                        <h2><a class="nav-link" routerLink="/game-list" routerLinkActive="active">Go to Game List</a></h2>
+                        <h2><a class="nav-link" routerLink="/admin/game-list" routerLinkActive="active" style="font-style: italic;">Go to Game List</a></h2>
                 </li>
             </ul>
         </div>
@@ -24,7 +24,7 @@
                 </div>
                 <br>
                 <div class="text-right">
-                    <a  class="btn btn-sm btn-primary  mr-3" routerLink="/add-player" routerLinkActive="active">Add Player</a>
+                    <a  class="btn btn-sm btn-primary  mr-3" routerLink="/admin/add-player" routerLinkActive="active">Add Player</a>
                     
                 </div>                
                 <br>
@@ -52,7 +52,7 @@
                                 <td>{{Player.player_fav_game}}</td>
                                 <td>{{Player.player_status}}</td>
                                 <td>
-                                    <a class="btn-sm btn-secondary" routerLink="/edit-player/{{Player._id}}" routerLinkActive="active">Edit</a>
+                                    <a class="btn-sm btn-secondary" routerLink="/admin/edit-player/{{Player._id}}" routerLinkActive="active">Edit</a>
                                     <a class="btn-sm btn-primary" (click)='deletePlayer(Player)'>X</a>
                                 </td>
                             </tr>

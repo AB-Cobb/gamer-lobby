@@ -6,39 +6,49 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PlayerService } from './shared/api.player.service';
+import { GameService } from './shared/api.game.service';
+import { AuthService } from './auth/auth.service';
 
-import { PlayerListComponent } from './components/player-list/player-list.component';
+import { AdminModule} from './admin/admin.module';
+
 import { JoinGameComponent } from './components/join-game/join-game.component';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { NotFoundComponent } from './components/notfound/notfound.component';
+
+/*
+import { PlayerListComponent } from './components/player-list/player-list.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { GameListComponent } from './components/game-list/game-list.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { AddGameComponent } from './components/add-game/add-game.component';
+*/
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerListComponent,
     JoinGameComponent,
     AdminLoginComponent,
     PlayerRankingsComponent,
+    NotFoundComponent,
+    /*PlayerListComponent,
     AddPlayerComponent,
     EditPlayerComponent,
     GameListComponent,
     EditGameComponent,
-    AddGameComponent,
-    
+    AddGameComponent,*/
+
   ],
   imports: [
+    AdminModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [PlayerService],
+  providers: [PlayerService, GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

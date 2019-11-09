@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { GameService } from './../../shared/api.game.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -31,11 +32,15 @@ export class GameListComponent implements OnInit {
     this.updateArrays();
   }
 
-  constructor(private gameApi: GameService, private ngZone: NgZone) {
+  constructor(private gameApi: GameService, private authService: AuthService, private ngZone: NgZone) {
     this.gameApi.GetAllGames().subscribe(data=>{
           this.gameArray = data;
           this.filteredArray = data;
     })
+  }
+
+  private logout(){
+    this.authService.logout()
   }
 
   private deleteGame(game){

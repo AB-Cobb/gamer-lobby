@@ -40,7 +40,7 @@ export class AddGameComponent implements OnInit {
   submitAddGameForm(){
     if (this.addGameForm.valid){
       this.gameApi.AddGame(this.addGameForm.value).subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/game-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/admin/game-list'))
       });
     }
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 @Component({
@@ -31,6 +32,10 @@ export class PlayerListComponent implements OnInit {
     this.updateArrays();
   }
 
+  private logout(){
+    this.authService.logout()
+  }
+
   private deletePlayer(player){
     if (confirm("delete "+ player['player_name'] +"?")){
       this.playerApi.DeletePlayer(player._id).subscribe();
@@ -42,7 +47,7 @@ export class PlayerListComponent implements OnInit {
     }
   }
 
-  constructor(private playerApi: PlayerService, private ngZone: NgZone) {
+  constructor(private playerApi: PlayerService, private authService: AuthService, private ngZone: NgZone) {
     this.playerApi.GetAllPlayers().subscribe(data=>{
           this.playerArray = data;
           this.filteredArray = data;
