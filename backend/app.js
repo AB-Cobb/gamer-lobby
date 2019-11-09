@@ -44,12 +44,22 @@ app.listen(port, () => {
 
 // index Route
 app.get('/', (req, res) => {
+  console.log('route / ')
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
-app.get('*', (req, res) => {
+app.get('/**', (req, res) => {
+  console.log('route /**')
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
 app.get('/*', (req, res) => {
+  console.log('route /*')
+  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
+});
+app.get('**', (req, res) => {
+  console.log('route **')
+  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
+});app.get('*', (req, res) => {
+  console.log('route *')
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
 
