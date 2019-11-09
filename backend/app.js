@@ -29,6 +29,7 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
+app.use('/anguler',express.static(__dirname + '/../dist/gamer-lobby'));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
@@ -43,7 +44,7 @@ app.listen(port, () => {
 
 // index Route
 app.get('/**', (req, res) => {
-  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
+  res.sendfile('/anguler/index.html')
 });
 
 
