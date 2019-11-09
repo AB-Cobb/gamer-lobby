@@ -37,8 +37,7 @@ app.use('/api', playerRoute);
 app.use('/api', gameRoute);
 
 // port
-//const port = process.env.PORT || 4000;
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
