@@ -7,14 +7,14 @@
             <h2>Player Rankings</h2>
         </div>
         <div class="card-body">
-                <div class="input-group mb-3">
-                    <input class="form-control" type="search" name="search" id="search">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary">
-                            Search
-                        </button>
-                    </div>
-                </div>
+            <div class="input-group">
+                <input class="form-control" type="search" name="search" id="search" (input)='updateFilter($event)'>
+                <span class="input-group-append">
+                    <span class="btn btn-secondary">
+                        Search
+                    </span>    
+                </span> 
+            </div>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
