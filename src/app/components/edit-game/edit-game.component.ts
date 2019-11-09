@@ -18,7 +18,7 @@ export class EditGameComponent implements OnInit {
   ratingsArray: any = [1,2,3,4,5];
   statusArray: any = ['Active' , 'Inactive']
   currYear: Number;
-  currGame: any;
+
 
   editGameForm = this.fb.group({
     game_title : ['' , Validators.required],

@@ -4,7 +4,6 @@ let express = require('express'),
   cors = require('cors'),
   bodyParser = require('body-parser'),
   DataBaseConfig = require('./db/gamer-lobby-db');
-  //gameDataBaseConfig = require('./db/games-db');
 //  mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
@@ -30,7 +29,7 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
-//app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
+app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 

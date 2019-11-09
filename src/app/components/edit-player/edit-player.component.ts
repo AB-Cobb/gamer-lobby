@@ -14,10 +14,9 @@ export class EditPlayerComponent implements OnInit {
   rankingsArray: any  = [1,2,3,4,5,6,7,8,9,10];
   gamesArray: any = ['Doom', 'Quake', 'Cyberpunk']
   statusArray: any = ['Availible' , 'Unavailible']
-  currPlayer: any = {};
 
   editPlayerForm = this.fb.group({
-    player_name : [this.currPlayer.player_name , Validators.required],
+    player_name : ['', Validators.required],
     player_rank : [this.rankingsArray[0]],
     player_score : [0],
     player_time : [0],
@@ -41,14 +40,13 @@ export class EditPlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.currPlayer)
   }
 
-  submitEditPlayerForm(){
+  private submitEditPlayerForm(){
     if (this.editPlayerForm.valid){
       let id = this.route.snapshot.paramMap.get('id');
       this.playerApi.UpdatePlayer(id,this.editPlayerForm.value).subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/game-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
       });
     }
   }

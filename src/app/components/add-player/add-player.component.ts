@@ -30,7 +30,7 @@ export class AddPlayerComponent implements OnInit {
   submitAddPlayerForm(){
     if (this.addPlayerForm.valid){
       this.playerApi.AddPlayer(this.addPlayerForm.value).subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/'))
       });
     }
   }
