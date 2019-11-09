@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class PlayerListComponent implements OnInit {
 
   private logout(){
     this.authService.logout()
+    this.router.navigateByUrl('/')
   }
 
   private deletePlayer(player){
@@ -47,7 +49,7 @@ export class PlayerListComponent implements OnInit {
     }
   }
 
-  constructor(private playerApi: PlayerService, private authService: AuthService, private ngZone: NgZone) {
+  constructor(private playerApi: PlayerService, private authService: AuthService, private ngZone: NgZone, private router: Router) {
     this.playerApi.GetAllPlayers().subscribe(data=>{
           this.playerArray = data;
           this.filteredArray = data;
