@@ -49,7 +49,9 @@ app.get('/', (req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
-
+app.get('/*', (req, res) => {
+  res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
+});
 
 /*
 app.use((req, res, next) => {
