@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
+import { GameService } from './../../shared/api.game.service';
 import { Player } from './../../shared/player';
 import { FormBuilder, Validators } from "@angular/forms";
 
@@ -12,18 +13,23 @@ import { FormBuilder, Validators } from "@angular/forms";
 })
 export class JoinGameComponent implements OnInit {
   currPlayer = new Player();
-  gamesArray: any = ['Doom', 'Quake', 'Cyberpunk']
+  gamesArray: any = []
   
-joinGameForm = this.fb.group({
-  select_game : ['Selecet a Game']
-})
+  joinGameForm = this.fb.group({
+    select_game : ['Selecet a Game']
+  })
 
-  constructor(private fb: FormBuilder, private playerApi: PlayerService, private router: Router, private ngZone: NgZone, private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private playerApi: PlayerService, private gameApi: GameService,  private router: Router, private ngZone: NgZone, private route: ActivatedRoute) {
     let id = this.route.snapshot.paramMap.get('id');
     this.playerApi.GetPlayerById(id).subscribe(data => {
       this.currPlayer  = Object.assign({}, data);
       console.log(data);
       console.log(this.currPlayer);
+    });
+    this.gameApi.GetAllGames().subscribe( data => {
+      for (let game of Object.keys(data)){
+        this.gamesArray.push(data[game]['game_title'])
+      }
     });
    }
 

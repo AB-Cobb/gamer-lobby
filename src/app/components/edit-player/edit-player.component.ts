@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { GameService } from './../../shared/api.game.service';
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-edit-player',
@@ -12,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class EditPlayerComponent implements OnInit {
 
   rankingsArray: any  = [1,2,3,4,5,6,7,8,9,10];
-  gamesArray: any = ['Doom', 'Quake', 'Cyberpunk']
+  gamesArray: any = []
   statusArray: any = ['Availible' , 'Unavailible']
 
   editPlayerForm = this.fb.group({
@@ -24,7 +25,7 @@ export class EditPlayerComponent implements OnInit {
     player_status : [this.statusArray[0]],
   }); 
 
-  constructor(private fb: FormBuilder, private playerApi: PlayerService, private router: Router, private ngZone: NgZone, private route: ActivatedRoute) { 
+  constructor(private fb: FormBuilder, private playerApi: PlayerService, private gameApi: GameService, private router: Router, private ngZone: NgZone, private route: ActivatedRoute) { 
     let id = this.route.snapshot.paramMap.get('id');
     console.log(id)
     this.playerApi.GetPlayerById(id).subscribe(data => {
@@ -37,6 +38,11 @@ export class EditPlayerComponent implements OnInit {
         player_status : [data.player_status],
       });
    })
+   this.gameApi.GetAllGames().subscribe( data => {
+    for (let game of Object.keys(data)){
+      this.gamesArray.push(data[game]['game_title'])
+    }
+  });
   }
 
   ngOnInit() {
