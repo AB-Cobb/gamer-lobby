@@ -28,7 +28,8 @@ export class JoinGameComponent implements OnInit {
     });
     this.gameApi.GetAllGames().subscribe( data => {
       for (let game of Object.keys(data)){
-        this.gamesArray.push(data[game]['game_title'])
+        if (data[game]['game_status'] == 'Active')
+          this.gamesArray.push(data[game]['game_title'])
       }
     });
    }
