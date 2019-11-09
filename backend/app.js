@@ -44,13 +44,7 @@ app.listen(port, () => {
 
 // index Route
 app.get('/**', (req, res) => {
-  console.log('/' + path.join(__dirname, '/../dist/gamer-lobby/index.html'));
-  res.sendfile(path.join(__dirname, '/../dist/gamer-lobby/index.html'), {}, function (err){
-    if (err){
-      console.log(err)
-      res.status(err.status).end();
-    }
-  });
+  res.sendfile(__dirname + '/../dist/gamer-lobby/index.html')
 });
 
 
