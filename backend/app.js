@@ -44,7 +44,7 @@ app.listen(port, () => {
 
 // index Route
 app.get('/**', (req, res) => {
-  res.sendfile('/index.html')
+  res.sendfile(__dirname + '/../dist/gamer-lobby/index.html')
 });
 
 
