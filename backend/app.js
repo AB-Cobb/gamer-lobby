@@ -55,11 +55,11 @@ app.get('*', (req, res) => {
 app.use((req, res, next) => {
   console.log('routing not working')
   next(createError(404));
-});//*/
+});//
 
 // error handler
 app.use(function (err, req, res, next) {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
-});
+});*/
