@@ -29,7 +29,6 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
-app.use('/**' .express.static(__dirname + '/../dist/gamer-lobby'));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
