@@ -11,6 +11,7 @@
                             <label for="player-name" class="col-sm-2 col-form-label">Player Name: </label>
                             <div class="col-sm-10">
                                 <input type="text" id="player-name" class="form-control" formControlName="player_name" >
+                                <p *ngIf="player_name.invalid && (player_name.dirty || player_name.touched || submitted)" class="text-danger">Name is Required</p>
                             </div>
                         </div>
             

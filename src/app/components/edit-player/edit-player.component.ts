@@ -15,6 +15,7 @@ export class EditPlayerComponent implements OnInit {
   rankingsArray: any  = [1,2,3,4,5,6,7,8,9,10];
   gamesArray: any = []
   statusArray: any = ['Availible' , 'Unavailible']
+  submitted:boolean = false;
 
   editPlayerForm = this.fb.group({
     player_name : ['', Validators.required],
@@ -44,11 +45,12 @@ export class EditPlayerComponent implements OnInit {
     }
   });
   }
-
+  get player_name() {return this.editPlayerForm.get("player_name")}
   ngOnInit() {
   }
 
   private submitEditPlayerForm(){
+    this.submitted = true;
     if (this.editPlayerForm.valid){
       let id = this.route.snapshot.paramMap.get('id');
       this.playerApi.UpdatePlayer(id,this.editPlayerForm.value).subscribe(res => {

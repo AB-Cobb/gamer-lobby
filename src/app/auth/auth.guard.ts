@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
  
   constructor(private authService: AuthService, private router: Router) {}
   isLogedin(): boolean {
-    console.log('logged in? ' + this.authService.isLoggedIn);
+    //console.log('logged in? ' + this.authService.isLoggedIn);
     if (this.authService.isLoggedIn) {
        return true; 
      } else {

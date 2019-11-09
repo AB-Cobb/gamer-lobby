@@ -29,7 +29,6 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
-app.use('/anguler',express.static(__dirname + '/../dist/gamer-lobby'));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
@@ -46,8 +45,6 @@ app.listen(port, () => {
 app.get('/**', (req, res) => {
   res.sendfile(__dirname + '/../dist/gamer-lobby/index.html')
 });
-
-
 
 app.use((req, res, next) => {
   console.log('routing not working')

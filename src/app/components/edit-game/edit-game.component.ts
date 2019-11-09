@@ -25,11 +25,13 @@ export class EditGameComponent implements OnInit {
     game_platform : [this.platformsArray[0]],
     game_genre : [this.genresArray[0]],
     game_rating : [this.ratingsArray[0]],
-    game_publisher : [''],
+    game_publisher : ['', Validators.required],
     game_release : [this.currYear],
     game_status : [this.statusArray[0]],
   });
 
+  get game_title(){ return this.editGameForm.get('game_title')}
+  get game_publisher(){ return this.editGameForm.get('game_publisher')}
 
   constructor(private fb: FormBuilder, private gameApi: GameService, private router: Router, private ngZone: NgZone, private route: ActivatedRoute) { 
     let id = this.route.snapshot.paramMap.get('id');

@@ -14,6 +14,7 @@ export class AddPlayerComponent implements OnInit {
   rankingsArray: any  = [1,2,3,4,5,6,7,8,9,10];
   gamesArray: any = []
   statusArray: any = ['Availible' , 'Unavailible']
+  submitted: boolean = false;
 
   constructor(private fb: FormBuilder, private playerApi: PlayerService,private gameApi: GameService, private router: Router, private ngZone: NgZone) { 
     this.gameApi.GetAllGames().subscribe( data => {
@@ -32,9 +33,12 @@ export class AddPlayerComponent implements OnInit {
     player_status : [this.statusArray[0]],
   });
 
+  get player_name() {return this.addPlayerForm.get("player_name")}
+
   ngOnInit() {}
 
   submitAddPlayerForm(){
+    this.submitted = true;
     if (this.addPlayerForm.valid){
       this.playerApi.AddPlayer(this.addPlayerForm.value).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/admin/player-list'))
