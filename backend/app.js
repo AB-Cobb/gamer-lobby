@@ -43,12 +43,13 @@ app.listen(port, () => {
 })
 
 // index Route
+/*
 app.get('/', (req, res) => {
-  console.log('route / ')
+  console.log('route /')
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
-});
+});*/
 app.get('/**', (req, res) => {
-  console.log('route /**')
+  console.log('route /**')//this one is triggered
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
 app.get('/*', (req, res) => {
