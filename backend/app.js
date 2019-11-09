@@ -44,7 +44,7 @@ app.listen(port, () => {
 // index Route
 app.get('/**', (req, res) => {
   console.log('route /**')//this one is triggered
-  res.send(__dirname + '/../dist/gamer-lobby');
+  res.redirect(__dirname + '/../dist/gamer-lobby');
   //res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
 });
 /*
