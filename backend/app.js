@@ -29,7 +29,8 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
-//app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
+app.use('/', express.static(__dirname+ '../dist/gammer-lobby'));
+app.use('/**', express.static(__dirname+ '../dist/gammer-lobby'));)
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
@@ -47,7 +48,7 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   console.log('route /')
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
-});*/
+});
 app.get('/**', (req, res) => {
   console.log('route /**')//this one is triggered
   res.sendFile(__dirname+ '/../dist/gamer-lobby/index.html');
