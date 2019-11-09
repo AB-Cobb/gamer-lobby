@@ -44,7 +44,7 @@ app.listen(port, () => {
 
 // index Route
 app.get('/**', (req, res) => {
-  res.sendfile('/anguler/index.html')
+  res.sendfile('/index.html')
 });
 
 
