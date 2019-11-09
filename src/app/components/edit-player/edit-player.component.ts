@@ -23,9 +23,7 @@ export class EditPlayerComponent implements OnInit {
     player_time : [0],
     player_fav_game : [this.gamesArray[0]],
     player_status : [this.statusArray[0]],
-  });
-
- 
+  }); 
 
   constructor(private fb: FormBuilder, private playerApi: PlayerService, private router: Router, private ngZone: NgZone, private route: ActivatedRoute) { 
     let id = this.route.snapshot.paramMap.get('id');
@@ -46,16 +44,16 @@ export class EditPlayerComponent implements OnInit {
     console.log(this.currPlayer)
   }
 
-  SubmitEditPlayerForm(){
+  submitEditPlayerForm(){
     if (this.editPlayerForm.valid){
       let id = this.route.snapshot.paramMap.get('id');
       this.playerApi.UpdatePlayer(id,this.editPlayerForm.value).subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/game-list'))
       });
     }
   }
 
   public handleError = (controlName: string, errorName: string) => {
     return this.editPlayerForm.controls[controlName].hasError(errorName);
-  }  //*/
+  } 
 }

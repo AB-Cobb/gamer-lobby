@@ -28,7 +28,7 @@ export class GameService {
   }
   //Read all Games
   GetAllGames(){
-    return this.http.get(this.endpoint+'/get-all-game');
+    return this.http.get(this.endpoint+'/get-all-games');
   }
   //get game by id
   GetPlayerById(id): Observable<any> {

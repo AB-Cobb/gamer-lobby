@@ -25,8 +25,7 @@ export class AddPlayerComponent implements OnInit {
     player_status : [this.statusArray[0]],
   });
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   submitAddPlayerForm(){
     if (this.addPlayerForm.valid){

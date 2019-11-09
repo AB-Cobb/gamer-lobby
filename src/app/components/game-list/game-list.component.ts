@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { GameService } from './../../shared/api.game.service';
-import { filter } from 'minimatch';
+
 
 @Component({
   selector: 'app-game-list',
@@ -13,7 +13,7 @@ export class GameListComponent implements OnInit {
   searchFilter: string ='';
 
   private updateArrays() {
-    if (filter.length > 0){
+    if (this.searchFilter.length > 0){
       this.filteredArray = [];
       this.gameArray.forEach(player => {
         let str = '' + player['player_name']
@@ -31,7 +31,6 @@ export class GameListComponent implements OnInit {
     this.updateArrays();
   }
 
-
   constructor(private gameApi: GameService, private ngZone: NgZone) {
     this.gameApi.GetAllGames().subscribe(data=>{
           this.gameArray = data;
@@ -39,7 +38,7 @@ export class GameListComponent implements OnInit {
     })
   }
 
-  private deletePlayer(game){
+  private deleteGame(game){
     if (confirm("delete "+ game['game_title'] +"?")){
       this.gameApi.DeleteGame(game._id).subscribe();
       console.log("deleted game: "+game['game_title']);

@@ -1,9 +1,10 @@
-$primary: darkorange;
-$body-bg: darkgray;
-$jumbotron-bg:  darkorange;
+$primary: yellow;
+$body-bg: #004;
+$jumbotron-bg:  #002;
 $jumbotron-color: yellow;
 $display1-weight: 600;
 $card-border-color: black;
+$card-bg: lightgray;
 $headings-font-family: "bauhaus 93";
 $font-family-base: "copperplate gothic lite";
 
@@ -11,4 +12,16 @@ $font-family-base: "copperplate gothic lite";
 
 .jumbotron > h1 {
     font-style: italic;
+}
+.jumbotron{
+    text-shadow: 0px 0px 6px yellow, 0px 0px 20px aqua;
+}
+.card{
+    box-shadow: 0px 0px 15px aqua;
+}
+.glow{
+    text-shadow: 0px 0px 3px lightblue, 0px 0px 8px aqua;
+}
+tr {
+    box-shadow: 0px 0px 5px aqua;
 }

@@ -5,22 +5,22 @@ let Game = new Schema({
     game_title: {
         type: String
     },
-    platform: { 
+    game_platform: { 
         type: String
     },
-    genre :{
+    game_genre :{
         type: String
     },
-    rating: {
+    game_rating: {
         type: Number
     },
-    publisher: {
+    game_publisher: {
         type: String
     },
-    release: {
-        type: String
+    game_release: {
+        type: Number
     },
-    status: {
+    game_status: {
         type: String
     }
 })

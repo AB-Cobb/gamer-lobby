@@ -15,6 +15,7 @@ import { AddPlayerComponent } from './components/add-player/add-player.component
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { GameListComponent } from './components/game-list/game-list.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
+import { AddGameComponent } from './components/add-game/add-game.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EditGameComponent } from './components/edit-game/edit-game.component';
     EditPlayerComponent,
     GameListComponent,
     EditGameComponent,
+    AddGameComponent,
     
   ],
   imports: [

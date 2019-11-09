@@ -3,40 +3,47 @@
         <h2>Choose a Game</h2>
     </div>
     <div class="card-body">
-        <div class="row">
-            <div class="col-md-2">Player</div>
-            <div class="col-md-5">Shooty mcShoots</div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">Rank</div>
-            <div class="col-md-5">4</div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">Score</div>
-            <div class="col-md-5">3</div>
-        </div>    
-        <div class="row">
-            <div class="col-md-2">Time</div>
-            <div class="col-md-5">6hrs</div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">Favourite Game</div>
-            <div class="col-md-5">Quake</div>
-        </div>   
-        <div class="row">
-            <div class="col-md-2">Pick Game</div>
-            <div class="col-md-5">
-                <form [formGroup]="joinGame" (ngSubmit)="joinGame()">
-                    <select>
-                        <option>Quake</option>
-                        <option>Doom</option>
-                        <option>Unreal</option>
-                    </select>
-                    <input type="submit" value="join" class="btn btn-primary mr-3" routerLink="/" routerLinkActive="active">
-                </form>
-            </div>
-            
-        </div> 
-         <a class="btn btn-primary" routerLink="/" routerLinkActive="active">Cancel</a>  
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Player</th><th>Shooty McShoots</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rank</td><td>4</td>
+                </tr>
+                <tr>
+                    <td>Score</td><td>5</td>
+                </tr>
+                <tr>
+                    <td>Time</td><td>50</td>
+                </tr>
+                <tr>
+                    <td>Favourite Game</td><td>Quake</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <form [formGroup]="joinGame" (ngSubmit)="joinGame()">
+                            <div class="form-group row">
+                                <label for="game" class="col-sm-2 col-form-label">Pick Game: </label>
+                                <div class="col-sm-10">
+                                    <select id="game" class="form-control" formControlName="join_game">
+                                        <option>Quake</option>
+                                        <option>Doom</option>
+                                        <option>Unreal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" value="Join Game" class="btn btn-primary mr-3" routerLink="/" routerLinkActive="active">
+                                <a class="btn btn-secondary" routerLink="/" routerLinkActive="active">Cancel</a>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

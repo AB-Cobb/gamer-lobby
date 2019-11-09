@@ -1,6 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
-import { filter } from 'minimatch';
 
 
 @Component({
@@ -14,7 +13,7 @@ export class PlayerListComponent implements OnInit {
   searchFilter: string ='';
 
   private updateArrays() {
-    if (filter.length > 0){
+    if (this.searchFilter.length > 0){
       this.filteredArray = [];
       this.playerArray.forEach(player => {
         let str = '' + player['player_name']

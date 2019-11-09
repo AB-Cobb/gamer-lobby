@@ -7,6 +7,8 @@ import { EditPlayerComponent } from './components/edit-player/edit-player.compon
 import { GameListComponent } from './components/game-list/game-list.component';
 import { JoinGameComponent } from './components/join-game/join-game.component';
 import { PlayerListComponent } from './components/player-list/player-list.component';
+import { EditGameComponent } from './components/edit-game/edit-game.component';
+import { AddGameComponent } from './components/add-game/add-game.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'admin-login', component: AdminLoginComponent}, 
   {path: 'edit-player/:id', component: EditPlayerComponent}, 
   {path: 'game-list', component: GameListComponent}, 
+  {path: 'edit-game/:id', component: EditGameComponent},
+  {path: 'add-game', component: AddGameComponent},
   {path: 'join-game/:id', component: JoinGameComponent}, 
   {path: 'player-list', component: PlayerListComponent}, 
 ];
