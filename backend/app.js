@@ -29,7 +29,7 @@ app.use(cors());
 
 //Static Dir
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
-app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
+//app.use('/', express.static(path.join(__dirname+ '../dist/gammer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
@@ -37,7 +37,8 @@ app.use('/api', playerRoute);
 app.use('/api', gameRoute);
 
 // port
-const port = process.env.PORT || 4000;
+//const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
