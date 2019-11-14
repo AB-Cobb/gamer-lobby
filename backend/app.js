@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
 // express js port
 const playerRoute = require('../backend/routes/player.route')
 const gameRoute = require('../backend/routes/game.route')
+const userRoute = require('../backend/routes/user.route')
 
 const app = express();
 app.use(bodyParser.json());
@@ -34,6 +35,7 @@ console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 //Restful API 
 app.use('/api', playerRoute);
 app.use('/api', gameRoute);
+app.use('/api', userRoute);
 
 // port
 const port = process.env.PORT || 4000;

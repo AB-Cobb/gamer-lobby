@@ -9,8 +9,6 @@ import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnaps
 export class AuthService {
   public isLoggedIn = false;
 
-
-
   logout(): void {
     this.isLoggedIn = false;
   }
