@@ -25,21 +25,12 @@ var jwtCheck = jwt({
       rateLimit: true,
       jwksRequestsPerMinute: 5,
       jwksUri: 'https://dev-5fqhxxpv.auth0.com/.well-known/jwks.json'
-}),
-audience: 'https://shielded-caverns-18893.herokuapp.com/api/',
-issuer: 'https://dev-5fqhxxpv.auth0.com/',
-algorithms: ['RS256']
+    }),
+    audience: 'https://shielded-caverns-18893.herokuapp.com/api/',
+    issuer: 'https://dev-5fqhxxpv.auth0.com/',
+    algorithms: ['RS256']
 });
 
-app.use(jwtCheck);
-
-app.get('/authorized', function (req, res) {
-    res.send('Secured Resource');
-});
-
-app.listen(port);
-
-// express js port
 const playerRoute = require('../backend/routes/player.route')
 const gameRoute = require('../backend/routes/game.route')
 const userRoute = require('../backend/routes/user.route')
@@ -47,13 +38,15 @@ const publicRoute = require('../backend/routes/public.route')
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
+app.use(jwtCheck);
+
+app.get('/authorized', function (req, res) {res.send('Secured Resource');});
+
 //Static Dir
-app.use(express.static(__dirname + '/../dist/gamer-lobby'));
+app.use(express.static(path.join(__dirname , '/../dist/gamer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API 
@@ -70,7 +63,7 @@ app.listen(port, () => {
 
 // index Route
 app.get('/**', (req, res) => {
-  res.sendfile(__dirname + '/../dist/gamer-lobby/index.html')
+  res.sendfile(path.join(__dirname , '/../dist/gamer-lobby/index.html'))
 });
 
 app.use((req, res, next) => {
