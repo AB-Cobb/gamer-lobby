@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
 
 )
 // JWT auth0 middleware 
-var jwtCheck = jwt({
+let jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
       cache: true,
       rateLimit: true,
