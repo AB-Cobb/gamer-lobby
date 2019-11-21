@@ -41,19 +41,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
-app.use(jwtCheck);
-
 app.get('/authorized', function (req, res) {res.send('Secured Resource');});
 
 //Static Dir
 app.use(express.static(path.join(__dirname , '/../dist/gamer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
-//Restful API 
+//Restful API
+app.use('/public_api', publicRoute);
+
 app.use('/api', playerRoute);
 app.use('/api', gameRoute);
 app.use('/api', userRoute);
-app.use('/public_api', publicRoute);
+
 
 // port
 const port = process.env.PORT || 4000;
