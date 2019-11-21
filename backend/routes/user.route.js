@@ -4,7 +4,7 @@ const userRoute = express.Router();
 
 let User = require('../models/User')
 
-gameRoute.route('/get-all-users').get((req, res) => {
+userRoute.route('/get-all-users').get((req, res) => {
     User.find((error, data) => {
         if (error) {
             console.log(error);
