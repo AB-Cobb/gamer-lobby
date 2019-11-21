@@ -15,15 +15,8 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { NotFoundComponent } from './components/notfound/notfound.component';
+import { CallbackComponent } from './callback.component';
 
-/*
-import { PlayerListComponent } from './components/player-list/player-list.component';
-import { AddPlayerComponent } from './components/add-player/add-player.component';
-import { EditPlayerComponent } from './components/edit-player/edit-player.component';
-import { GameListComponent } from './components/game-list/game-list.component';
-import { EditGameComponent } from './components/edit-game/edit-game.component';
-import { AddGameComponent } from './components/add-game/add-game.component';
-*/
 
 @NgModule({
   declarations: [
@@ -32,12 +25,7 @@ import { AddGameComponent } from './components/add-game/add-game.component';
     AdminLoginComponent,
     PlayerRankingsComponent,
     NotFoundComponent,
-    /*PlayerListComponent,
-    AddPlayerComponent,
-    EditPlayerComponent,
-    GameListComponent,
-    EditGameComponent,
-    AddGameComponent,*/
+    CallbackComponent,
 
   ],
   imports: [
@@ -48,7 +36,7 @@ import { AddGameComponent } from './components/add-game/add-game.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [PlayerService, GameService],
+  providers: [PlayerService, GameService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

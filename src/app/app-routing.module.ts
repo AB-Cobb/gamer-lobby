@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { JoinGameComponent } from './components/join-game/join-game.component';
-import { NotFoundComponent } from './components/notfound/notfound.component'
+import { CallbackComponent } from './components/callback/callback.component';
+import { NotFoundComponent } from './components/notfound/notfound.component';
 
 
 const routes: Routes = [
@@ -11,9 +12,9 @@ const routes: Routes = [
   {path: 'player-rankings', component: PlayerRankingsComponent},  
   {path: 'admin-login', component: AdminLoginComponent}, 
   {path: 'join-game/:id', component: JoinGameComponent},
+  {path: 'callback', component: CallbackComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
-
 ];
 
 

@@ -1,28 +1,80 @@
 import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {WebAuth} from 'auth0-js';
+import { environment } from './../../environments/environment';
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public isLoggedIn = false;
+
+  token_expires: number;
+  user: any;
+  token: string;
+  loggedIn: boolean;
+
+  auth0 = new WebAuth({
+      clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',
+      domain: 'dev-5fqhxxpv.auth0.com',
+      responseType: 'token',
+      redirectUri: 'http://localhost:4200/callback',
+      audience: 'http://localhost:3001',
+      scope: 'openid profile'
+  })
+  getAccessToken() {
+    this.auth0.checkSession({}, (err, authResult) => {
+      if (authResult && authResult.accessToken) {
+        this.getUserInfo(authResult);
+      }
+    });
+  }
+  getUserInfo(authResult) {
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      if (profile) {
+        this._setSession(authResult, profile);
+      }
+    });
+  }
+  private _setSession(authResult, profile) {
+    // Save authentication data and update login status subject
+    this.token_expires = authResult.expiresIn * 1000 + Date.now();
+    this.token = authResult.accessToken;
+    this.user = profile;
+    this.loggedIn = true;
+  }
 
   logout(): void {
-    this.isLoggedIn = false;
+    this.auth0.logout({
+      returnTo: 'http://localhost:4200',
+      clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD'
+    });
   }
 
-  login(data): Observable<any>{
-    if (data['username'] == 'root' && data['password'] == 'sw0rdfish'){
-      this.isLoggedIn = true;
-      return of(true);
-    } else {
-      return of(false)
-    }
+  isLoggedIn(): boolean {
+    return this.loggedIn && Date.now() < this.token_expires;
   }
 
-  redirect: string;
+  login(){
+    this.auth0.authorize();
+  }
 
-  constructor(private authService: AuthService) { }
+  handleLoginCallback() {
+    // When Auth0 hash parsed, get profile
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken) {
+        window.location.hash = '';
+        this.getUserInfo(authResult);
+      } else if (err) {
+        console.error(`Error: ${err.error}`);
+      }
+      this.router.navigate(['/']);
+    });
+  }
+
+  constructor(private router: Router) { 
+    this.getAccessToken();
+  }
 }
