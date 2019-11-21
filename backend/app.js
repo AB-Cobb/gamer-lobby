@@ -48,11 +48,13 @@ app.use(express.static(path.join(__dirname , '/../dist/gamer-lobby')));
 console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful API
-app.use('/public_api', publicRoute);
+
+//app.use('/public_api', publicRoute);
 
 app.use('/api', playerRoute);
 app.use('/api', gameRoute);
 app.use('/api', userRoute);
+
 
 
 // port
