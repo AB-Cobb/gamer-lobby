@@ -15,7 +15,7 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { NotFoundComponent } from './components/notfound/notfound.component';
-import { CallbackComponent } from './callback.component';
+import { CallbackComponent } from './components/callback/callback.component';
 
 
 @NgModule({

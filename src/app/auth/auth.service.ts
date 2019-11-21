@@ -39,7 +39,6 @@ export class AuthService {
     });
   }
   private _setSession(authResult, profile) {
-    // Save authentication data and update login status subject
     this.token_expires = authResult.expiresIn * 1000 + Date.now();
     this.token = authResult.accessToken;
     this.user = profile;
