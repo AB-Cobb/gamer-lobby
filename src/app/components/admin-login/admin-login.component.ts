@@ -21,14 +21,7 @@ export class AdminLoginComponent implements OnInit {
   })
 
   loginFormSubmit(){
-    this.authService.login(this.loginForm.value).subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        console.log("logged in")
-        this.ngZone.run(() => this.router.navigateByUrl('/admin/player-list'))
-      } else {
-        alert("Invalid username or password, hint: try root, sw0rdfish")
-      }
-    });
+
   }
 
 }
