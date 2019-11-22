@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-player-rankings',
@@ -30,7 +31,7 @@ export class PlayerRankingsComponent implements OnInit {
     this.updateArrays();
   }
 
-  constructor(private playerApi: PlayerService, private ngZone: NgZone) {
+  constructor(private playerApi: PlayerService, private authSerive: AuthService, private ngZone: NgZone) {
     this.playerApi.GetAllPlayers().subscribe(data=>{
       this.playerArray = data;
       this.filteredArray = data;

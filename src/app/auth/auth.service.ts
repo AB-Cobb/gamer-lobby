@@ -53,7 +53,8 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.loggedIn && Date.now() < this.token_expires;
+    return false;
+    //return this.loggedIn && Date.now() < this.token_expires;
   }
 
   login(){
