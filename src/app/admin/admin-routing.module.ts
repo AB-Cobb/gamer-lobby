@@ -21,7 +21,8 @@ const routes: Routes = [
           {path: 'edit-game/:id', component: EditGameComponent},
           {path: 'add-game', component: AddGameComponent},
           {path: 'join-game/:id', component: JoinGameComponent}, 
-          {path: 'player-list', component: PlayerListComponent}, 
+          {path: 'player-list', component: PlayerListComponent,
+          canActivate : [AuthGuard]}, 
     ]}
 ];
 
