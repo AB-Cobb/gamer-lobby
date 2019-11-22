@@ -21,7 +21,7 @@ export class AuthService {
       domain: 'dev-5fqhxxpv.auth0.com',
       responseType: 'token',
       redirectUri: 'https://shielded-caverns-18893.herokuapp.com/callback',
-      audience: 'https://shielded-caverns-18893.herokuapp.com',
+      audience: 'https://shielded-caverns-18893.herokuapp.com/api',
       scope: 'openid profile'
   })
   getAccessToken() {
