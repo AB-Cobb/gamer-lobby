@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
-const playerRoute = express.Router();
+const publicRoute = express.Router();
 
 let Player = require('../models/Player')
 
 //Join game
-playerRoute.route('/join_game/:id').put((req, res, next) =>{
+publicRoute.route('/join_game/:id').put((req, res, next) =>{
     Player.findByIdAndUpdate(req.params.id, {
-        $set: req.body
+        $set: {'player_status' : 'Unavailible'}
     }, (error, data) => {
         if (error) {
             console.log(error);
@@ -18,3 +18,4 @@ playerRoute.route('/join_game/:id').put((req, res, next) =>{
         }
     })
 })
+module.exports = publicRoute;

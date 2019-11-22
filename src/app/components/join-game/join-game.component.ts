@@ -35,7 +35,7 @@ export class JoinGameComponent implements OnInit {
    }
 
   private joinGameSubmit(){
-    console.log("hello")
+    //console.log("hello")
     if (this.joinGameForm.valid){
       this.currPlayer.player_status = 'Unavailible';
       console.log(this.currPlayer);
