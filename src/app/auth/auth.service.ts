@@ -17,8 +17,7 @@ export class AuthService {
   loggedIn: boolean = false;
 
   auth0 = new WebAuth({
-      //clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',
-      client: '5dcd9aa1b39c2d08339579b2',
+      clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',
       domain: 'dev-5fqhxxpv.auth0.com',
       responseType: 'token',
       redirectUri: 'https://shielded-caverns-18893.herokuapp.com/callback',
