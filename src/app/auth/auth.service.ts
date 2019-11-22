@@ -14,7 +14,7 @@ export class AuthService {
   token_expires: number;
   user: any;
   token: string;
-  loggedIn: boolean;
+  loggedIn: boolean = false;
 
   auth0 = new WebAuth({
       clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',

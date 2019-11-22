@@ -7,11 +7,11 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild  {
-  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): boolean  {
+  canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean>  {
     return this.isLogedin()
   }
 
-  canActivateChild( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {  
+  canActivateChild( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {  
     return this.canActivate(route, state);
   }
  
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
     if (this.authService.isLoggedIn) {
        return true; 
      } else {
-      this.router.navigate(['/admin-login']);
+      this.router.navigate(['/']);
       return false;
     }
   }
