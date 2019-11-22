@@ -20,8 +20,8 @@ export class AuthService {
       clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',
       domain: 'dev-5fqhxxpv.auth0.com',
       responseType: 'token',
-      redirectUri: 'http://localhost:4200/callback',
-      audience: 'http://localhost:3001',
+      redirectUri: 'https://shielded-caverns-18893.herokuapp.com/callback',
+      audience: 'https://shielded-caverns-18893.herokuapp.com',
       scope: 'openid profile'
   })
   getAccessToken() {
@@ -47,7 +47,7 @@ export class AuthService {
 
   logout(): void {
     this.auth0.logout({
-      returnTo: 'http://localhost:4200',
+      returnTo: 'https://shielded-caverns-18893.herokuapp.com',
       clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD'
     });
   }
