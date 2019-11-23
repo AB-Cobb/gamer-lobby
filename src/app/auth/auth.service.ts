@@ -18,7 +18,7 @@ export class AuthService {
 
   auth0 = new WebAuth({
       clientID: 'LWR95861fRJLWyuKsyALy584N0JHN4vd',
-      domain: 'https://snowy-term-2316.auth0.com/oauth/token',
+      domain: 'snowy-term-2316.auth0.com',
       responseType: 'token',
       redirectUri: 'https://shielded-caverns-18893.herokuapp.com',
       audience: 'https://snowy-term-2316.auth0.com/api/v2/',
