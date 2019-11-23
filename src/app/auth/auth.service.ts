@@ -17,13 +17,13 @@ export class AuthService {
   loggedIn: boolean = false;
 
   auth0 = new WebAuth({
-      clientID: 'Vp7Ru7169NLkvhq5PmD5KhVIO9oS7EbD',
-      domain: 'dev-5fqhxxpv.auth0.com',
+      clientID: 'LWR95861fRJLWyuKsyALy584N0JHN4vd',
+      domain: 'https://snowy-term-2316.auth0.com/oauth/token',
       responseType: 'token',
-      redirectUri: 'https://shielded-caverns-18893.herokuapp.com/callback',
-      audience: 'https://shielded-caverns-18893.herokuapp.com/api',
+      redirectUri: 'https://shielded-caverns-18893.herokuapp.com',
+      audience: 'https://snowy-term-2316.auth0.com/api/v2/',
       scope: 'openid profile email'
-  })
+  }) 
   getAccessToken() {
     this.auth0.checkSession({}, (err, authResult) => {
       if (authResult && authResult.accessToken) {
