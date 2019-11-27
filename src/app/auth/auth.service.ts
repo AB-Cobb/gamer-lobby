@@ -71,7 +71,7 @@ export class AuthService {
   private handleAuthCallback() {
     const params = window.location.search;
     if (params.includes('code=') && params.includes('state=')) {
-      let targetRoute: string; /
+      let targetRoute: string; 
       const authComplete$ = this.handleRedirectCallback$.pipe(
         tap(cbRes => {
           targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
