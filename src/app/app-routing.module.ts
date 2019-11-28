@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'admin-login', component: AdminLoginComponent}, 
   {path: 'callback', component: CallbackComponent},
   {path: '404', component: NotFoundComponent},
+  {path: 'join-game/:id', component: JoinGameComponent}, 
   {path: '**', redirectTo: '/404'}
 ];
 
