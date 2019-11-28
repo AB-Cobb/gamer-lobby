@@ -50,8 +50,8 @@ console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 //Restful APIs
 
 app.use('/api', publicRoute);
-app.use('/api', jwtCheck, playerRoute);
-app.use('/api', jwtCheck, gameRoute);
+//app.use('/api', jwtCheck, playerRoute);
+//app.use('/api', jwtCheck, gameRoute);
 
 
 
