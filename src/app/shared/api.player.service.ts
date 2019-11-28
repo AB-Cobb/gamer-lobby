@@ -57,10 +57,10 @@ export class PlayerService {
     return this.http.put(API_URL, data)
   }
   //Leave Game
-  LeaveGame(id, data: Player): Observable<any> {
+  LeaveGame(id): Observable<any> {
     console.log("Leave Game")
     let API_URL = this.endpoint+'/exit_game/'+id;
-    return this.http.put(API_URL, data)
+    return this.http.put(API_URL, id)
   }
 
 
