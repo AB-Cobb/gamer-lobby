@@ -10,7 +10,7 @@ import createAuth0Client from '@auth0/auth0-spa-js';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn: boolean = null;
+  loggedIn: boolean;
   userProfile: any;
   accessToken: string;
   expiresAt: number;
@@ -69,8 +69,8 @@ export class AuthService {
 
   private _setSession(authResult, profile) {
     console.log('set session');
-    const expTime = authResult.expiresIn * 1000 + Date.now();
-    localStorage.setItem('expires_at', JSON.stringify(expTime));
+    /*const expTime = authResult.expiresIn * 1000 + Date.now();
+    localStorage.setItem('expires_at', JSON.stringify(expTime));*/
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
     this.expiresAt = authResult.expiresIn * 1000 + Date.now();
