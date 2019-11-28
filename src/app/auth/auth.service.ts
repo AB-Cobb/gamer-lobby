@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import {WebAuth} from 'auth0-js';
 import { Router } from '@angular/router';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
@@ -12,6 +11,10 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 })
 export class AuthService {
 
+  private userProfileSubject$ = new BehaviorSubject<any>(null);
+  userProfile$ = this.userProfileSubject$.asObservable();
+  loggedIn: boolean = null;
+
   auth0Client$ = (from(
     createAuth0Client({
       domain: "snowy-term-2316.auth0.com",
@@ -23,16 +26,17 @@ export class AuthService {
     shareReplay(1),
     catchError(err => throwError(err))
   );
+
   isAuthenticated$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.isAuthenticated())),
     tap(res => this.loggedIn = res)
   );
+
   handleRedirectCallback$ = this.auth0Client$.pipe(
     concatMap((client: Auth0Client) => from(client.handleRedirectCallback()))
   );
-  private userProfileSubject$ = new BehaviorSubject<any>(null);
-  userProfile$ = this.userProfileSubject$.asObservable();
-  loggedIn: boolean = null;
+
+
 
   constructor(private router: Router) {
     this.localAuthSetup();
