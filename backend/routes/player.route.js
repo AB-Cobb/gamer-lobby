@@ -17,6 +17,7 @@ playerRoute.route('/add-player').post((req,res,next) =>{
 })
 
 //Get
+/*
 playerRoute.route('/get-player/:id').get((req, res) => {
     Player.findById(req.params.id, (error, data) =>{
         if (error) {
@@ -27,7 +28,6 @@ playerRoute.route('/get-player/:id').get((req, res) => {
         } 
     })
 })
-/*
 //List
 playerRoute.route('/get-all-players').get((req, res) => {
     Player.find((error, data) => {

@@ -3,6 +3,7 @@ const app = express();
 const publicRoute = express.Router();
 
 let Player = require('../models/Player')
+let Game = require('../models/Game')
 
 //Join game
 publicRoute.route('/join_game/:id').put((req, res, next) =>{
@@ -18,6 +19,19 @@ publicRoute.route('/join_game/:id').put((req, res, next) =>{
         }
     })
 })
+//get player
+publicRoute.route('/get-player/:id').get((req, res) => {
+    Player.findById(req.params.id, (error, data) =>{
+        if (error) {
+            console.log(error);
+            return next(error);
+        } else {
+            res.json(data);
+        } 
+    })
+})
+
+
 //list players
 publicRoute.route('/get-all-players').get((req, res) => {
     Player.find((error, data) => {
