@@ -19,12 +19,12 @@ mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
 
 )
 // JWT auth0 
-let jwtCheck = jwt({
+const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
       cache: true,
       rateLimit: true,
       jwksRequestsPerMinute: 5,
-      jwksUri: 'https://snowy-term-2316.auth0.com/.well-known/jwks.json'
+      jwksUri: 'https://snowy-term-2316.auth0.com/api/.well-known/jwks.json'
     }),
     audience: 'https://shielded-caverns-18893.herokuapp.com/api',
     issuer: 'https://snowy-term-2316.auth0.com',
