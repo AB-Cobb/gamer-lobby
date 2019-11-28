@@ -13,7 +13,8 @@ export class AuthService {
   loggedIn: boolean = null;
   userProfile: any;
   accessToken: string;
-
+  expiresAt: number;
+  
   auth0 = new WebAuth({
     clientID: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
     domain: "snowy-term-2316.auth0.com",
@@ -76,8 +77,8 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return Date.now() < expiresAt && this.loggedIn;
+    //
+    return (Date.now() < this.expiresAt) && this.loggedIn;
   }
 
   logout() {
