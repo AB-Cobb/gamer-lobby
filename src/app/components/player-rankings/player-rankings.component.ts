@@ -40,8 +40,8 @@ export class PlayerRankingsComponent implements OnInit {
   }
   leave_game(id){
     this.playerApi.LeaveGame(id).subscribe(res => {
-      this.ngZone.run(() => this.router.navigateByUrl('/player-rankings'))
     });
+    this.updateArrays();
   }
 
   ngOnInit() {
