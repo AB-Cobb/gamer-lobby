@@ -10,10 +10,77 @@ import createAuth0Client from '@auth0/auth0-spa-js';
   providedIn: 'root'
 })
 export class AuthService {
+  loggedIn: boolean = null;
+  userProfile: any;
+  accessToken: string;
 
+  auth0 = new WebAuth({
+    client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
+    domain: "snowy-term-2316.auth0.com",
+    responseType: 'token',
+    redirect_uri: 'https://shielded-caverns-18893.herokuapp.com',
+    audience: "https://shielded-caverns-18893.herokuapp.com/api" 
+  })
+
+
+  constructor(private router: Router) {
+    this.getAccessToken();
+  }
+
+  login() {
+    this.auth0.authorize();
+  }
+
+  handleLoginCallback() {
+    // When Auth0 hash parsed, get profile
+    this.auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken) {
+        window.location.hash = '';
+        this.getUserInfo(authResult);
+      } else if (err) {
+        console.error(`Error: ${err.error}`);
+      }
+      this.router.navigate(['/admin/player-list']);
+    });
+  }
+
+  getAccessToken() {
+    this.auth0.checkSession({}, (err, authResult) => {
+      if (authResult && authResult.accessToken) {
+        this.getUserInfo(authResult);
+      } else if (err) {
+        console.log(err);
+        this.logout();
+        this.loggedIn = false;
+      }
+    });
+  }
+  getUserInfo(authResult) {
+    this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      if (profile) {
+        this._setSession(authResult, profile);
+      }
+    });
+  }
+
+  private _setSession(authResult, profile) {
+    const expTime = authResult.expiresIn * 1000 + Date.now();
+    localStorage.setItem('expires_at', JSON.stringify(expTime));
+    this.accessToken = authResult.accessToken;
+    this.userProfile = profile;
+    this.loggedIn = true;
+  }
+
+  logout() {
+    localStorage.removeItem('expires_at');
+    this.userProfile = undefined;
+    this.accessToken = undefined;
+    this.loggedIn = false;
+  }
+  /*
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
-  loggedIn: boolean = null;
+  
 
   auth0Client$ = (from(
     createAuth0Client({
@@ -99,5 +166,5 @@ export class AuthService {
         returnTo: 'https://shielded-caverns-18893.herokuapp.com'
       });
     });
-  }
+  }//*/
 }
