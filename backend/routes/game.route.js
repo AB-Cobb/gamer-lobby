@@ -29,6 +29,7 @@ gameRoute.route('/get-game/:id').get((req, res) => {
 })
 
 //List
+/*
 gameRoute.route('/get-all-games').get((req, res) => {
     Game.find((error, data) => {
         if (error) {
@@ -38,7 +39,7 @@ gameRoute.route('/get-all-games').get((req, res) => {
             res.json(data);
         }
     })
-})
+})*/
 
 //Update
 gameRoute.route('/update-game/:id').put((req, res, next) =>{
