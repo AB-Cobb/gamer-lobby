@@ -15,11 +15,12 @@ export class AuthService {
   accessToken: string;
 
   auth0 = new WebAuth({
-    client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
+    clientID: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
     domain: "snowy-term-2316.auth0.com",
     responseType: 'token',
     redirect_uri: 'https://shielded-caverns-18893.herokuapp.com',
-    audience: "https://shielded-caverns-18893.herokuapp.com/api" 
+    audience: "https://shielded-caverns-18893.herokuapp.com/api",
+    
   })
 
 
@@ -32,13 +33,12 @@ export class AuthService {
   }
 
   handleLoginCallback() {
-    // When Auth0 hash parsed, get profile
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
         window.location.hash = '';
         this.getUserInfo(authResult);
       } else if (err) {
-        console.error(`Error: ${err.error}`);
+        console.error(err.error);
       }
       this.router.navigate(['/admin/player-list']);
     });
@@ -82,6 +82,7 @@ export class AuthService {
     this.accessToken = undefined;
     this.loggedIn = false;
   }
+  //*/
   /*
   private userProfileSubject$ = new BehaviorSubject<any>(null);
   userProfile$ = this.userProfileSubject$.asObservable();
