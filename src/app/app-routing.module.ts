@@ -11,7 +11,6 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo:'player-rankings'},
   {path: 'player-rankings', component: PlayerRankingsComponent},  
   {path: 'admin-login', component: AdminLoginComponent}, 
-  {path: 'join-game/:id', component: JoinGameComponent},
   {path: 'callback', component: CallbackComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
