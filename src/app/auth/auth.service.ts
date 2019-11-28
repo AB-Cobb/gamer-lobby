@@ -92,10 +92,11 @@ export class AuthService {
     }
   }
 
-  getTokenSilently$(options?): Observable<string> {
-    return this.auth0Client$.pipe(
-      concatMap((client: Auth0Client) => from(client.getTokenSilently(options)))
-    );
+  getToken(){
+    this.auth0Client$.subscribe((client: Auth0Client)=> {
+      return client.getTokenSilently();
+    });
+    
   }
 
   logout() {

@@ -45,10 +45,10 @@ export class PlayerService {
   //Update player
   UpdatePlayer(id, data: Player): Observable<any> {
     console.log('updating ' + data);
+    let token = this.authService.getToken();
+    console.log('token ' + token)
     let API_URL = this.endpoint+'/update-player/'+id;
-    let token = this.authService.getTokenSilently$().subscribe();
-    console.log(token)
-    return this.http.put(API_URL, data, { headers: new HttpHeaders().set('Authorization', `Bearer ${token}`)}).pipe(
+    return this.http.put(API_URL, data, { headers: new HttpHeaders().set('Authorization', 'Bearer ${token}')}).pipe(
       catchError(this.errorHandler)
     )
   }
