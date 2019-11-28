@@ -3,6 +3,7 @@ import { Player } from './player';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class PlayerService {
   //endpoint: string = 'http://localhost:4000/api';
   endpoint :string = 'api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   // Error handling 
   errorHandler(error: HttpErrorResponse) {
@@ -45,7 +46,7 @@ export class PlayerService {
   UpdatePlayer(id, data: Player): Observable<any> {
     console.log('updating ' + data);
     let API_URL = this.endpoint+'/update-player/'+id;
-    return this.http.put(API_URL, data, { headers: this.headers}).pipe(
+    return this.http.put(API_URL, data, { headers: new HttpHeaders().set('Authorization', `Bearer ${this.authService.getTokenSilently$()}`)}).pipe(
       catchError(this.errorHandler)
     )
   }

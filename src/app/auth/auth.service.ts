@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-//import { Observable, of} from 'rxjs';
+
 import {WebAuth} from 'auth0-js';
-import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
 import { tap, catchError, concatMap, shareReplay } from 'rxjs/operators';
 import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
@@ -88,7 +87,7 @@ export class AuthService {
       });
     }
   }
-  
+
   getTokenSilently$(options?): Observable<string> {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getTokenSilently(options)))
