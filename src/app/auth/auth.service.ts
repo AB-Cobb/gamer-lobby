@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 //import { Observable, of} from 'rxjs';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import {WebAuth} from 'auth0-js';
 import { environment } from './../../environments/environment';
 import { Router } from '@angular/router';
@@ -18,7 +17,7 @@ export class AuthService {
     createAuth0Client({
       domain: "snowy-term-2316.auth0.com",
       client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
-      redirect_uri: `${window.location.origin}/admin/player-list`
+      redirect_uri: '/'
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1),
@@ -59,10 +58,10 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = '/') {
+  login(redirectPath: string = '/admin/player-list') {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.loginWithRedirect({
-        redirect_uri: `${window.location.origin}`,
+        redirect_uri: '/admin/player-list',//`${window.location.origin}`,
         appState: { target: redirectPath }
       });
     });
@@ -74,7 +73,7 @@ export class AuthService {
       let targetRoute: string; 
       const authComplete$ = this.handleRedirectCallback$.pipe(
         tap(cbRes => {
-          targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/';
+          targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/admin/player-list';
         }),
         concatMap(() => {
           return combineLatest([
@@ -92,8 +91,8 @@ export class AuthService {
   logout() {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.logout({
-        client_id: "YOUR_CLIENT_ID",
-        returnTo: `${window.location.origin}`
+        client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
+        returnTo: `/`
       });
     });
   }
