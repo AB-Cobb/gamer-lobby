@@ -18,7 +18,7 @@ export class AuthService {
     createAuth0Client({
       domain: "snowy-term-2316.auth0.com",
       client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
-      redirect_uri: `${window.location.origin}`
+      redirect_uri: `${window.location.origin}/admin/player-list`
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1),
