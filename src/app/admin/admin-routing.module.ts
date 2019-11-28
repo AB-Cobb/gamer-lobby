@@ -7,6 +7,9 @@ import { PlayerListComponent } from '../components/player-list/player-list.compo
 import { EditGameComponent } from '../components/edit-game/edit-game.component';
 import { AddGameComponent } from '../components/add-game/add-game.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from '../auth/interceptor.service';
+
 
 const routes: Routes = [
   {
@@ -24,6 +27,11 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }]
 })
 export class AdminRoutingModule { }
