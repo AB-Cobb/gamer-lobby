@@ -16,6 +16,8 @@ export class InterceptorService implements HttpInterceptor  {
       }),
       catchError(err => throwError(err))
       );
+    } else {
+    return next.handle(req);
     }
   }
   constructor(private authService: AuthService) {
