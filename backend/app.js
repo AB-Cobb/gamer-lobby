@@ -26,7 +26,7 @@ let jwtCheck = jwt({
       jwksRequestsPerMinute: 5,
       jwksUri: 'https://snowy-term-2316.auth0.com/.well-known/jwks.json'
     }),
-    audience: 'https://shielded-caverns-18893.herokuapp.com',
+    audience: 'https://shielded-caverns-18893.herokuapp.com/api',
     issuer: 'https://snowy-term-2316.auth0.com',
     algorithms: ['RS256']
 });
@@ -50,9 +50,9 @@ console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 //Restful APIs
 
 app.use('/api', publicRoute);
-
-app.use('/api', jwtCheck, playerRoute);
-app.use('/api', jwtCheck, gameRoute);
+app.use(jwtCheck);
+app.use('/api', playerRoute);
+app.use('/api',gameRoute);
 
 
 
