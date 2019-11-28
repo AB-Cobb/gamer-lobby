@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { PlayerService } from './../../shared/api.player.service';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-rankings',
@@ -31,16 +32,17 @@ export class PlayerRankingsComponent implements OnInit {
     this.updateArrays();
   }
 
-  constructor(private playerApi: PlayerService, private authSerive: AuthService, private ngZone: NgZone) {
+  constructor(private playerApi: PlayerService, private authSerive: AuthService, private ngZone: NgZone, private router: Router) {
     this.playerApi.GetAllPlayers().subscribe(data=>{
       this.playerArray = data;
       this.filteredArray = data;
-})
-   }/*
-   private login(){
-     console.log("tryinh to log in!!");
-     this.authSerive.login();
-   }*/
+    })
+  }
+  leave_game(id){
+    this.playerApi.LeaveGame(id).subscribe(res => {
+      this.ngZone.run(() => this.router.navigateByUrl('/'))
+    });
+  }
 
   ngOnInit() {
   }
