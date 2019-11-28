@@ -71,6 +71,11 @@ export class AuthService {
     this.loggedIn = true;
   }
 
+  public isLoggedIn(): boolean {
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return Date.now() < expiresAt && this.loggedIn;
+  }
+
   logout() {
     localStorage.removeItem('expires_at');
     this.userProfile = undefined;

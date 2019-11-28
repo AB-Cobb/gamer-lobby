@@ -9,6 +9,9 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate, CanActivateChild  {
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean> | Promise<boolean|UrlTree> | boolean {
+    return this.authService.isLoggedIn();
+   
+    /*
     return this.authService.isAuthenticated$.pipe(
       tap(loggedIn => {
         if (!loggedIn) {
@@ -17,7 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
         }
       })
     );
-     
+     */
   }
 
   canActivateChild( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean|UrlTree> | boolean {  
