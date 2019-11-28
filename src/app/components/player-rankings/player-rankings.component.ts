@@ -41,7 +41,7 @@ export class PlayerRankingsComponent implements OnInit {
   leave_game(player){
     this.playerApi.LeaveGame(player._id).subscribe(res => {});
     let i = this.playerArray.findIndex(item => item === player)
-    this.playerArray[i]['status'] = "Availible";
+    this.playerArray[i]['player_status'] = "Availible";
     this.updateArrays();
   }
 
