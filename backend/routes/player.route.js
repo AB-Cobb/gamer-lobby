@@ -27,7 +27,7 @@ playerRoute.route('/get-player/:id').get((req, res) => {
         } 
     })
 })
-
+/*
 //List
 playerRoute.route('/get-all-players').get((req, res) => {
     Player.find((error, data) => {
@@ -38,7 +38,7 @@ playerRoute.route('/get-all-players').get((req, res) => {
             res.json(data);
         }
     })
-})
+})*/
 
 //Update
 playerRoute.route('/update-player/:id').put((req, res, next) =>{

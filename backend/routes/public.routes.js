@@ -18,4 +18,15 @@ publicRoute.route('/join_game/:id').put((req, res, next) =>{
         }
     })
 })
+//list players
+playerRoute.route('/get-all-players').get((req, res) => {
+    Player.find((error, data) => {
+        if (error) {
+            console.log(error);
+            return next(error);
+        } else {
+            res.json(data);
+        }
+    })
+})
 module.exports = publicRoute;

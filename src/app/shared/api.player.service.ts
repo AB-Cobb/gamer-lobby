@@ -48,6 +48,13 @@ export class PlayerService {
       catchError(this.errorHandler)
     )
   }
+  //Join Game
+  JoinGame(id, data: Player): Observable<any> {
+    console.log("Joining Game")
+    let API_URL = this.endpoint+'/join_game/'+id;
+    return this.http.put(API_URL, data)
+  }
+
   // delete player
   DeletePlayer(id): Observable<any> {
     let API_URL = this.endpoint+'/delete-player/'+id;

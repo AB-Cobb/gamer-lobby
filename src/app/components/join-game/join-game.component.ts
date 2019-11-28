@@ -37,11 +37,14 @@ export class JoinGameComponent implements OnInit {
   private joinGameSubmit(){
     //console.log("hello")
     if (this.joinGameForm.valid){
+      this.playerApi.JoinGame(this.currPlayer._id, this.currPlayer).subscribe(res => {
+        this.ngZone.run(() => this.router.navigateByUrl('/'))
+      /*
       this.currPlayer.player_status = 'Unavailible';
       console.log(this.currPlayer);
       this.playerApi.UpdatePlayer(this.currPlayer._id, this.currPlayer).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/'))
-      });
+      });*/
     }
   }
 

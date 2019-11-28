@@ -49,11 +49,10 @@ console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 
 //Restful APIs
 
-//app.use('/public_api', publicRoute);
-
+app.use('/api', publicRoute);
 app.use('/api', playerRoute);
 app.use('/api', gameRoute);
-app.use('/api', userRoute);
+//app.use('/api', userRoute);
 
 
 
