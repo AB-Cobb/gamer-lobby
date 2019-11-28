@@ -92,13 +92,6 @@ export class AuthService {
     }
   }
 
-  getToken(){
-    this.auth0Client$.subscribe((client: Auth0Client)=> {
-      return client.getTokenSilently();
-    });
-    
-  }
-
   logout() {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.logout({

@@ -41,6 +41,7 @@
                             <td>{{Player.player_status}}</td>
                             <td>
                                 <a *ngIf="Player.player_status=='Availible'" class="btn-sm btn-primary" routerLink="/join-game/{{Player._id}}" routerLinkActive="active">Join Game</a>
+                                <a *ngIf="Player.player_status=='Unavailible'" class="btn-sm btn-secondary" routerLink="/exit-game/{{Player._id}}" routerLinkActive="active">Leave Game</a>
                             </td>
                         </tr>
                     </ng-container> 

@@ -45,10 +45,8 @@ export class PlayerService {
   //Update player
   UpdatePlayer(id, data: Player): Observable<any> {
     console.log('updating ' + data);
-    let token = this.authService.getToken();
-    console.log('token ' + token)
     let API_URL = this.endpoint+'/update-player/'+id;
-    return this.http.put(API_URL, data, { headers: new HttpHeaders().set('Authorization', 'Bearer ${token}')}).pipe(
+    return this.http.put(API_URL, data, { headers: this.headers}).pipe(
       catchError(this.errorHandler)
     )
   }
@@ -58,6 +56,13 @@ export class PlayerService {
     let API_URL = this.endpoint+'/join_game/'+id;
     return this.http.put(API_URL, data)
   }
+  //Leave Game
+  LeaveGame(id, data: Player): Observable<any> {
+    console.log("Leave Game")
+    let API_URL = this.endpoint+'/exit_game/'+id;
+    return this.http.put(API_URL, data)
+  }
+
 
   // delete player
   DeletePlayer(id): Observable<any> {

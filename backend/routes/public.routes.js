@@ -19,6 +19,22 @@ publicRoute.route('/join_game/:id').put((req, res, next) =>{
         }
     })
 })
+//exit game
+publicRoute.route('/exit_game/:id').put((req, res, next) =>{
+    Player.findByIdAndUpdate(req.params.id, {
+        $set: {'player_status' : 'Availible'}
+    }, (error, data) => {
+        if (error) {
+            console.log(error);
+            return next(error);
+        } else {
+            res.json(data)
+            console.log('updated player')
+        }
+    })
+})
+
+
 //get player
 publicRoute.route('/get-player/:id').get((req, res) => {
     Player.findById(req.params.id, (error, data) =>{
