@@ -38,11 +38,10 @@ export class PlayerRankingsComponent implements OnInit {
       this.filteredArray = data;
     })
   }
-  leave_game(id){
-    this.playerApi.LeaveGame(id).subscribe(res => {});
-    this.playerApi.GetAllPlayers().subscribe(data=>{
-      this.playerArray = data;
-    });
+  leave_game(player){
+    this.playerApi.LeaveGame(player._id).subscribe(res => {});
+    let i = this.playerArray.findIndex(item => item === player)
+    this.playerArray[i].status = "Availible";
     this.updateArrays();
   }
 
