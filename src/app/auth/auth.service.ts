@@ -18,7 +18,7 @@ export class AuthService {
     clientID: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
     domain: "snowy-term-2316.auth0.com",
     responseType: 'token',
-    redirectUri: 'https://shielded-caverns-18893.herokuapp.com',
+    redirectUri: 'https://shielded-caverns-18893.herokuapp.com/callback',
     audience: "https://shielded-caverns-18893.herokuapp.com/api",
     
   })
