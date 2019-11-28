@@ -33,7 +33,7 @@ const jwtCheck = jwt({
 
 const playerRoute = require('../backend/routes/player.route')
 const gameRoute = require('../backend/routes/game.route')
-const userRoute = require('../backend/routes/user.route')
+//const userRoute = require('../backend/routes/user.route')
 const publicRoute = require('../backend/routes/public.routes')
 
 const app = express();

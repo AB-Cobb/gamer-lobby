@@ -12,7 +12,7 @@ export class InterceptorService implements HttpInterceptor  {
     if (this.authService.loggedIn){
       return this.authService.getTokenSilently$().pipe(mergeMap(token => {
         console.log(token);
-        const tokenRequest = req.clone({ setHeaders: {Authorisation: 'Bearer ${token}'}});
+        const tokenRequest = req.clone({ setHeaders: {Authorization: 'Bearer ${token}'}});
         return next.handle(tokenRequest);
       }),
       catchError(err => throwError(err))
