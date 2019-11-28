@@ -39,7 +39,9 @@ export class PlayerRankingsComponent implements OnInit {
     })
   }
   leave_game(id){
-    this.playerApi.LeaveGame(id).subscribe(res => {
+    this.playerApi.LeaveGame(id).subscribe(res => {});
+    this.playerApi.GetAllPlayers().subscribe(data=>{
+      this.playerArray = data;
     });
     this.updateArrays();
   }
