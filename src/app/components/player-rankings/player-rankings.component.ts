@@ -36,11 +36,11 @@ export class PlayerRankingsComponent implements OnInit {
       this.playerArray = data;
       this.filteredArray = data;
 })
-   }
+   }/*
    private login(){
      console.log("tryinh to log in!!");
      this.authSerive.login();
-   }
+   }*/
 
   ngOnInit() {
   }
