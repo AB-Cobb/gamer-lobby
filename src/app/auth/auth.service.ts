@@ -58,10 +58,10 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = '/') {
+  login(redirectPath: string = '/admin/player-list') {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.loginWithRedirect({
-        redirect_uri: 'https://shielded-caverns-18893.herokuapp.com/admin/player-list',//`${window.location.origin}`,
+        redirect_uri: 'https://shielded-caverns-18893.herokuapp.com/admin/player-list',
         appState: { target: redirectPath }
       });
     });
@@ -73,7 +73,7 @@ export class AuthService {
       let targetRoute: string; 
       const authComplete$ = this.handleRedirectCallback$.pipe(
         tap(cbRes => {
-          targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : '/admin/player-list';
+          targetRoute = cbRes.appState && cbRes.appState.target ? cbRes.appState.target : 'https://shielded-caverns-18893.herokuapp.com/admin/player-list';
         }),
         concatMap(() => {
           return combineLatest([

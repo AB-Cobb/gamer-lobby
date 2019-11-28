@@ -1,6 +1,6 @@
 <div class="text-right">
     <button class="glow btn btn-link" (click)="authSerive.login()" *ngIf="!authSerive.loggedIn">Log In</button>
-    <a class="glow" routerLink="/admin/player-list" *ngIf="authSerive.loggedIn">Log Out</a> | 
+    <a class="glow" routerLink="/admin/player-list" *ngIf="authSerive.loggedIn">Admin Tools |</a>
     <button class="glow btn btn-link" routerLinkActive="active" (click)="authSerive.logout()" *ngIf="authSerive.loggedIn">Log Out</button>
 </div>
 <br>
