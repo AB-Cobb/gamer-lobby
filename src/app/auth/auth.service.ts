@@ -33,6 +33,7 @@ export class AuthService {
   }
 
   handleLoginCallback() {
+    console.log('handle longin call back');
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken) {
         window.location.hash = '';
@@ -56,6 +57,7 @@ export class AuthService {
     });
   }
   getUserInfo(authResult) {
+    console.log('get user info');
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
         this._setSession(authResult, profile);
@@ -64,6 +66,7 @@ export class AuthService {
   }
 
   private _setSession(authResult, profile) {
+    console.log('set session');
     const expTime = authResult.expiresIn * 1000 + Date.now();
     localStorage.setItem('expires_at', JSON.stringify(expTime));
     this.accessToken = authResult.accessToken;
