@@ -14,7 +14,7 @@ export class AuthService {
   userProfile: any;
   accessToken: string;
   expiresAt: number;
-  
+
   auth0 = new WebAuth({
     clientID: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
     domain: "snowy-term-2316.auth0.com",
@@ -72,6 +72,7 @@ export class AuthService {
     localStorage.setItem('expires_at', JSON.stringify(expTime));
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
+    this.expiresAt = authResult.expiresIn * 1000 + Date.now();
     this.loggedIn = true;
     console.log("logged in = "+this.isLoggedIn())
   }
