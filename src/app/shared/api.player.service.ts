@@ -19,6 +19,7 @@ export class PlayerService {
     let errorMessage = 'Error Error Abandon Ship !!!! ' + error.message;
     return throwError(errorMessage);
   }
+
   //Create player
   AddPlayer(data:Player): Observable<any> {
     let API_URL = this.endpoint+'/add-player';
