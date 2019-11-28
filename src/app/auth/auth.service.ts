@@ -59,6 +59,7 @@ export class AuthService {
   }
   getUserInfo(authResult) {
     console.log('get user info');
+    console.log("logged in = "+this.isLoggedIn())
     this.auth0.client.userInfo(authResult.accessToken, (err, profile) => {
       if (profile) {
         this._setSession(authResult, profile);
@@ -78,8 +79,8 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    //
-    return (Date.now() < this.expiresAt) && this.loggedIn;
+    return this.loggedIn;
+    //return (Date.now() < this.expiresAt) && this.loggedIn;
   }
 
   logout() {
