@@ -17,7 +17,7 @@ export class AuthService {
     createAuth0Client({
       domain: "snowy-term-2316.auth0.com",
       client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
-      redirect_uri: '/'
+      redirect_uri: 'https://shielded-caverns-18893.herokuapp.com'
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1),
@@ -58,10 +58,10 @@ export class AuthService {
     checkAuth$.subscribe();
   }
 
-  login(redirectPath: string = '/admin/player-list') {
+  login(redirectPath: string = '/') {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.loginWithRedirect({
-        redirect_uri: '/admin/player-list',//`${window.location.origin}`,
+        redirect_uri: 'https://shielded-caverns-18893.herokuapp.com/admin/player-list',//`${window.location.origin}`,
         appState: { target: redirectPath }
       });
     });
