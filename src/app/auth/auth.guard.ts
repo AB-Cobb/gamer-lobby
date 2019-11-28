@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate, CanActivateChild  {
   canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean> | Promise<boolean|UrlTree> | boolean {
-    if (!this.authService.isLoggedIn) {
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/404']);
       return false;
     }
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate, CanActivateChild  {
   }
 
   canActivateChild( route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean|UrlTree> | boolean {  
-    if (!this.authService.isLoggedIn) {
+    if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/404']);
       return false;
     }

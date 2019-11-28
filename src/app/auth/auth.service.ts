@@ -72,6 +72,7 @@ export class AuthService {
     this.accessToken = authResult.accessToken;
     this.userProfile = profile;
     this.loggedIn = true;
+    console.log("logged in = "+this.isLoggedIn())
   }
 
   public isLoggedIn(): boolean {
@@ -84,6 +85,7 @@ export class AuthService {
     this.userProfile = undefined;
     this.accessToken = undefined;
     this.loggedIn = false;
+    console.log("logged in = "+this.isLoggedIn())
   }
   //*/
   /*
