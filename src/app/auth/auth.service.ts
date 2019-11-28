@@ -42,6 +42,7 @@ export class AuthService {
       } else if (err) {
         console.error(err.error);
       }
+      console.log(this.auth0)
       this.router.navigate(['/admin/player-list']);
     });
   }
