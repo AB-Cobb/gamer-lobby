@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || DataBaseConfig.db, {
   }
 
 )
-// JWT auth0 middleware 
+// JWT auth0 
 let jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
       cache: true,
@@ -50,9 +50,9 @@ console.log('app dir: '+ __dirname+ '/../dist/gamer-lobby');
 //Restful APIs
 
 app.use('/api', publicRoute);
-app.use('/api', playerRoute);
-app.use('/api', gameRoute);
-//app.use('/api', userRoute);
+
+app.use('/api', jwtCheck, playerRoute);
+app.use('/api', jwtCheck, gameRoute);
 
 
 
