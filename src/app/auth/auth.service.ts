@@ -92,7 +92,7 @@ export class AuthService {
     this.auth0Client$.subscribe((client: Auth0Client) => {
       client.logout({
         client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
-        returnTo: `/`
+        returnTo: 'https://shielded-caverns-18893.herokuapp.com'
       });
     });
   }
