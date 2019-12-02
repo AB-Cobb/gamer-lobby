@@ -19,6 +19,7 @@ export class AuthService {
     createAuth0Client({
       domain: "snowy-term-2316.auth0.com",
       client_id: "KaGyM3uGjtynqVAmGosbQEmpJmM5cKV1",
+      scope: 'openid',
       redirect_uri: 'https://shielded-caverns-18893.herokuapp.com',
       audience: "https://shielded-caverns-18893.herokuapp.com/api"
     })
